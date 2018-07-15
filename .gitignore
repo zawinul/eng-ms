@@ -1,23 +1,109 @@
-# Compiled class file
-*.class
+*.iml
+out/
+*.ipr
+*.iws
+classpath.txt
+version.properties
+.project
+.classpath
+lib/*
+build/*
+generated-files/*
+generated-sources/*
+generated-code/*
+*.swp
+*.swo
+target
+.idea
+.lib
+atlassian-ide-plugin.xml
+.DS_Store
+packages/
+.pub
+.packages
+.vagrant/
 
-# Log file
-*.log
+.settings
 
-# BlueJ files
-*.ctxt
+*.mustache~
+*.java~
+*.pm~
+*.xml~
+*.t~
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+/target
+/generated-files
+/nbactions.xml
 
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
+# scalatra
+samples/server-generator/scalatra/output
+samples/server-generator/scalatra/target
+samples/server-generator/scalatra/output/.history
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+# nodejs
+samples/server-generator/node/output/node_modules
+samples/server/petstore/nodejs/node_modules
+samples/server/petstore/nodejs-server/node_modules
+
+# qt5 cpp
+samples/client/petstore/qt5cpp/PetStore/moc_*
+samples/client/petstore/qt5cpp/PetStore/*.o
+samples/client/petstore/qt5cpp/build-*
+samples/client/petstore/qt5cpp/PetStore/PetStore
+samples/client/petstore/qt5cpp/PetStore/Makefile
+
+#Java/Android
+**/.gradle/
+samples/client/petstore/java/hello.txt
+samples/client/petstore/android/default/hello.txt
+samples/client/petstore/android/volley/.gradle/
+samples/client/petstore/android/volley/build/
+samples/client/petstore/java/jersey2/.gradle/
+samples/client/petstore/java/jersey2/build/
+samples/client/petstore/java/okhttp-gson/.gradle/
+samples/client/petstore/java/okhttp-gson/build/
+
+#PHP
+samples/client/petstore/php/SwaggerClient-php/composer.lock
+samples/client/petstore/php/SwaggerClient-php/vendor/
+samples/client/petstore/silex/SwaggerServer/composer.lock
+samples/client/petstore/silex/SwaggerServer/venodr/
+
+# Perl
+samples/client/petstore/perl/deep_module_test/
+
+# Objc
+samples/client/petstore/objc/PetstoreClient.xcworkspace/xcuserdata
+samples/client/petstore/objc/SwaggerClientTests/SwaggerClient.xcodeproj/xcuserdata
+samples/client/petstore/objc/SwaggerClientTests/Build
+samples/client/petstore/objc/SwaggerClientTests/Pods
+samples/client/petstore/objc/SwaggerClientTests/SwaggerClient.xcworkspace
+samples/client/petstore/objc/SwaggerClientTests/Podfile.lock
+
+# Swift
+samples/client/petstore/swift/SwaggerClientTests/SwaggerClient.xcodeproj/xcuserdata
+samples/client/petstore/swift/SwaggerClientTests/SwaggerClient.xcworkspace/xcuserdata
+samples/client/petstore/swift/SwaggerClientTests/Pods/Pods.xcodeproj/xcuserdata
+samples/client/petstore/swift/SwaggerClientTests/Pods/Pods.xcodeproj/xcshareddata/xcschemes
+
+# C#
+*.csproj.user
+samples/client/petstore/csharp/SwaggerClientTest/.vs
+samples/client/petstore/csharp/SwaggerClientTest/obj
+samples/client/petstore/csharp/SwaggerClientTest/bin
+samples/client/petstore/csharp/SwaggerClientTest/Lib/SwaggerClient/vendor/
+samples/client/petstore/csharp/SwaggerClientTest/bin/Debug/
+samples/client/petstore/csharp/SwaggerClientTest/obj/Debug/
+samples/client/petstore/csharp/SwaggerClientTest/Lib/SwaggerClient/nuget.exe
+samples/client/petstore/csharp/SwaggerClientTest/TestResult.xml
+samples/client/petstore/csharp/SwaggerClientTest/nuget.exe
+samples/client/petstore/csharp/SwaggerClientTest/testrunner/
+
+# Python
+*.pyc
+__pycache__
+samples/client/petstore/python/dev-requirements.txt.log
+samples/client/petstore/python/swagger_client.egg-info/SOURCES.txt
+samples/client/petstore/python/.coverage
+samples/client/petstore/python/.projectile
+samples/client/petstore/python/.venv/
