@@ -14,9 +14,9 @@ public class EngEurekaApplication {
 
 	public static void main(String[] args) {
 
-		ConfigurableApplicationContext ctx;
-		ctx = SpringApplication.run(EngEurekaApplication.class, args);
+		ConfigurableApplicationContext ctx 
+			= SpringApplication.run(EngEurekaApplication.class, args);
 		String port = ctx.getEnvironment().getProperty("server.port");
-		System.out.println("\n\n\nSTARTED ON PORT "+port+"\n\n\n");  
+		System.out.println("\n\n\n\t\tSTARTED ON PORT "+port+"\n\n\n");  
 	}
 }
