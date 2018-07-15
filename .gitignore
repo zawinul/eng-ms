@@ -23,6 +23,7 @@ packages/
 .packages
 .vagrant/
 
+.metadata
 .settings
 
 *.mustache~
