@@ -22,6 +22,8 @@ public class EurekaConfig {
 	    System.out.println("info="+info);
 	    
 	    if (info!=null && info.getMetadata().keySet().size()>0) {
+	    	for(String k:info.getMetadata().keySet()) 
+			    System.out.println("\t"+k+":\t"+info.getMetadata().get(k));
 		    System.out.println("\t\tAWS INITIALIZED\n");
 	    	b.setDataCenterInfo(info);
 	    }
