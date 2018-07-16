@@ -9,9 +9,10 @@ import org.springframework.context.annotation.Profile;
 
 import com.netflix.appinfo.AmazonInfo;
 
-@Configuration
+//@Configuration
 public class EurekaConfig {
-	
+
+	/*
 	@Bean
 	//@Profile("!default")
 	public EurekaInstanceConfigBean eurekaInstanceConfig() {
@@ -32,6 +33,6 @@ public class EurekaConfig {
 	    	
 	    return b;
 	}
-
+	*/
 
 }
