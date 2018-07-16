@@ -25,20 +25,6 @@ public class EngEurekaApplication {
 			= SpringApplication.run(EngEurekaApplication.class, args);
 		String port = ctx.getEnvironment().getProperty("server.port");
 		System.out.println("\n\n\n\t\tSTARTED ON PORT "+port+"\n\n\n");  
-	}
-	
-	/*
-	@Bean
-	//@Profile("!default")
-	public EurekaInstanceConfigBean eurekaInstanceConfig() {
-		System.out.println("\n\nAWS\n\n");
-	    EurekaInstanceConfigBean b = new EurekaInstanceConfigBean(new InetUtils(new InetUtilsProperties()));
-	    AmazonInfo info = AmazonInfo.Builder.newBuilder().autoBuild("eureka");
-	    b.setDataCenterInfo(info);
-	    return b;
-	}
-*/
-
-	
+	}	
 
 }
