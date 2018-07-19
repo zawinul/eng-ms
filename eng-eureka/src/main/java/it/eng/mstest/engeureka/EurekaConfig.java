@@ -12,7 +12,7 @@ import com.netflix.appinfo.AmazonInfo;
 //@Configuration
 public class EurekaConfig {
 
-	/*
+	
 	@Bean
 	//@Profile("!default")
 	public EurekaInstanceConfigBean eurekaInstanceConfig() {
@@ -33,6 +33,6 @@ public class EurekaConfig {
 	    	
 	    return b;
 	}
-	*/
+	
 
 }
