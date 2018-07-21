@@ -12,7 +12,7 @@ package it.eng.mstest.engeureka;
 //@Configuration
 public class EurekaConfig {
 
-	/*
+	
 	@Bean
 	//@Profile("!default")
 	public EurekaInstanceConfigBean eurekaInstanceConfig() {
@@ -33,6 +33,6 @@ public class EurekaConfig {
 	    	
 	    return b;
 	}
-	*/
+	
 
 }
