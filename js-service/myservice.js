@@ -3,7 +3,7 @@ const Eureka = require('eureka-js-client').Eureka;
 const client = new Eureka({
 	// application instance information
 	instance: {
-		app: 'my-ys-service',
+		app: 'my-js-service',
 		hostName: 'localhost',
 		ipAddr: '127.0.0.1',
 		port: {
@@ -19,8 +19,8 @@ const client = new Eureka({
 	},
 	eureka: {
 		// eureka server host / port
-		host: '18.206.248.218',
-		port: 8761,
+		host: 'eureka-machine',
+		port: 80,
 		servicePath: '/eureka/apps/'
 	},
 });
