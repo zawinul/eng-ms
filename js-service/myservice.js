@@ -20,9 +20,9 @@ const client = new Eureka({
 	eureka: {
 		// eureka server host / port
 		host: 'eureka-machine',
-		port: 80,
+		port: 8176,
 		servicePath: '/eureka/apps/'
-	},
+	}
 });
 client.logger.level('debug');
 client.start();

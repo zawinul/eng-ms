@@ -1,0 +1,48 @@
+Users\Training\Desktop\Courses\Spring Cloud\Lessons\1000\1003 Authorization Server Setup\Authorization Server Setup
+   │
+   ├[.mvn]
+   │   │
+   │   └[wrapper]
+   │       │
+   │       ├maven-wrapper
+   │       └maven-wrapper
+   ├[.settings]
+   │   │
+   │   ├org.eclipse.core.resources
+   │   ├org.eclipse.jdt.core
+   │   └org.eclipse.m2e.core
+   ├[src]
+   │   │
+   │   ├[main]
+   │   │   │
+   │   │   ├[java]
+   │   │   │   │
+   │   │   │   └[com]
+   │   │   │       │
+   │   │   │       └[oreilly]
+   │   │   │           │
+   │   │   │           └[cloud]
+   │   │   │               │
+   │   │   │               ├AuthorizationServerConfig
+   │   │   │               ├SpringMicroservicesOauthServerApplication
+   │   │   │               └WebSecurityConfig
+   │   │   └[resources]
+   │   │       │
+   │   │       └application
+   │   └[test]
+   │       │
+   │       └[java]
+   │           │
+   │           └[com]
+   │               │
+   │               └[oreilly]
+   │                   │
+   │                   └[cloud]
+   │                       │
+   │                       └SpringMicroservicesOauthServerApplicationTests
+   ├
+   ├
+   ├
+   ├mvnw
+   ├mvnw
+   └pom

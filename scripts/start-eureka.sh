@@ -1,1 +1,1 @@
-java -jar $ENGMS-PRJDIR/eng-eureka/target/eng-eureka.jar
+java -jar git $ENGMSDIR/eng-eureka/target/eng-eureka.jar
