@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>home</title>
+	<script src="jquery-3.2.1.js"></script>
+	<script>
+		var params = {
+			client_id: 'foo',
+			response_type: 'code',
+			scope: 'openid',
+			state: 'pippo',
+			redirect_uri: 'https://oidc-consumer:5043/callback'
+		};
+		$(function() {
+			var a=[];
+			for(var k in params)
+				a.push(k+'='+escape(params[k]));
+			var u = 'https://oidc-provider:3043/auth?'+a.join('&');
+			$('#authlink').attr('href', u);
+			$('#authdesc').html(u);
+		});
+	</script>
+</head>
+<body>
+	<h3>this is home</h3>
+		
+	<a href="https://github.com/panva/node-oidc-provider-example/tree/master/00-oidc-minimal">help simple consumer</a>, 
+	<a href="https://github.com/panva/node-oidc-provider/tree/4085e3fa3d0cf4b875fe19bd780cd750c5b07c36">help provider</a>,
+	<a href="https://oidc-provider:3043/.well-known/openid-configuration">conf</a>
+	<hr>
+	<!--
+	// 	<a href= "https://oidc-provider:3043/auth?client_id=foo&response_type=code&scope=openid&state=pippo">esempio su manuale + stato</a>
+	// //https://oidc-provider:3043//auth?client_id=foo&response_type=code&scope=openid&state=pippo	<br>
+	-->
+		<a id="authlink">autentica</a> // <span id ="authdesc"></span>
+</body>
+</html>
