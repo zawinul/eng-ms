@@ -6,53 +6,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Document</title>
-		<script src="jquery-3.2.1.js"></script>
+	<script src="jquery-3.2.1.js"></script>
+	<script src="utils.js">	</script>
 	<script>
-		var code;
-		function getInfo() {
-			try {
-				var params = location.href.split('?')[1].split('&').map(x => x.split('='));
-				code = params.filter(a => a[0] == 'code')[0][1];
-				console.log('code=' + code);
-				$('#code').val(code);	
-			} catch (error) {}
-		}
-
-
-		function doPost() {
-			var params = {
-				grant_type:"authorization_code",
-				code: code, 
-				// client_id:"foo",
-				// client_secret:"bar",
-				response_type: "code", 
-				scope: "openid", 
-				redirect_uri:"https://oidc-consumer:5043/callback"
-			}
-			function aaa(jqXHR, settings) {
-				// console.log(arguments);
-				// jqXHR.setRequestHeader('Authorization', "Basic "+btoa("foo:bar"));
-				// jqXHR.setRequestHeader('altro', "altro");
-			}
-			$.ajax({
-				url: "https://oidc-provider:3043/token",
-				method: "POST",
-				//crossDomain: false,
-				//dataType: "jsonp",
-				headers:{
-				 	Authorization: "Basic "+btoa("foo:bar")
-				},
-				data: params,
-				success: function() {
-					console.log('success', arguments)
-				},
-				error: function() {
-					console.log('error', arguments)
-				},
-				beforeSend: aaa
-			})
-		}
-
 		$(getInfo);
 		$(function() { $('#dopost').click(doPost);})
 	</script>
@@ -61,18 +17,8 @@
 <body>
 	<h3>this is callback 1.3</h3>
 	<div class="info">__INFO__</div>
-	<div style="border:1px solid gray; padding:5px;width:500px; background-color: antiquewhite">
-		<form action="https://oidc-provider:3043/token" method="post">
-			grant type:<input type="text" name="grant_type" value="authorization_code">			<br> 
-			code:<input type="text" name="code" id="code" value=""><br> 
-			client_id:<input type="text" name="client_id" value="foo"><br>
-			response type: <input type="text" name="response_type" value="code"><br> 
-			scope: <input type="text" name="scope" value="openid"><br>
-			<input type="submit" name="sumbit" value="ok">
-		</form>
-	</div>
-
 	<div><button id="dopost">do post</button></div>
+	<div id="results"></div>
 </body>
 
 </html>

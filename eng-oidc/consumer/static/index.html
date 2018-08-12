@@ -10,8 +10,10 @@
 		var params = {
 			client_id: 'foo',
 			response_type: 'code',
-			scope: 'openid',
-			state: 'pippo',
+			//scope: 'openid',
+			scope: 'openid email profile altro',
+			state: 'pippo-state',
+			nonce: 'pippo-nonce', 
 			redirect_uri: 'https://oidc-consumer:5043/callback'
 		};
 		$(function() {
@@ -31,10 +33,6 @@
 	<a href="https://github.com/panva/node-oidc-provider/tree/4085e3fa3d0cf4b875fe19bd780cd750c5b07c36">help provider</a>,
 	<a href="https://oidc-provider:3043/.well-known/openid-configuration">conf</a>
 	<hr>
-	<!--
-	// 	<a href= "https://oidc-provider:3043/auth?client_id=foo&response_type=code&scope=openid&state=pippo">esempio su manuale + stato</a>
-	// //https://oidc-provider:3043//auth?client_id=foo&response_type=code&scope=openid&state=pippo	<br>
-	-->
-		<a id="authlink">autentica</a> // <span id ="authdesc"></span>
+	<a id="authlink">autentica</a> // <span id ="authdesc"></span>
 </body>
 </html>

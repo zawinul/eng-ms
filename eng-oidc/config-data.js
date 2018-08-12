@@ -8,43 +8,15 @@ const clients = [{
 			'https://oidc-consumer:5043/callback-after-auth'
 		],
 		tokenEndpointAuthMethods:[ 
-			//'none',
+			'none',
 			'client_secret_basic',
-			//'client_secret_jwt',
+			'client_secret_jwt',
 			'client_secret_post',
-			//'private_key_jwt' 
+			'private_key_jwt' 
 		],
-		__tokenEndpointAuthMethods: 'none',
-		__tokenEndpointAuthMethods: 'client_secret_post'
-	},
-	{
-		token_endpoint_auth_method: 'none',
-		client_id: 'altro',
-		client_secret: 'altro',
-		grant_types: ['implicit'],
-		response_types: ['id_token'],
-		redirect_uris: ['https://oidc-consumer:5043/callback']
-	  },
+		___tokenEndpointAuthMethods:'client_secret_basic'
+	}
 ];
-
-const configuration = {
-	  formats: {
-		default: 'opaque',
-		AccessToken: 'jwt',
-	  },
-	  features: {
-		claimsParameter: true,
-		conformIdTokenClaims: true,
-		discovery: true,
-		encryption: true,
-		introspection: true,
-		registration: true,
-		request: true,
-		revocation: true,
-		sessionManagement: true,
-	  }
-	
-};
 
 const sslOptions = {
 	key: fs.readFileSync('certificati/eng-key.pem'),
@@ -54,6 +26,5 @@ const sslOptions = {
 
 module.exports = {
 	clients: clients,
-	configuration: configuration,
 	sslOptions: sslOptions
 }
