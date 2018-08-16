@@ -3,9 +3,12 @@ const myData = require('../config-data');
 const http = require('http');
 const https = require('https');
 const fs = require('fs');
-
+const jwt = require('jsonwebtoken');
+const bodyParser = require('body-parser');
 
 var app = express();
+app.use(express.json());       // to support JSON-encoded bodies
+app.use(express.urlencoded()); // to support URL-encoded bodies
 app.use(express.static('consumer/static'));
 
 http.createServer(app).listen(5000);
@@ -19,16 +22,25 @@ app.get('/callback', function (req, res) {
 	for (var k in req.query)
 		h.push('<b style="color:#800000">' + k + ' : ' + req.query[k] + '</b>');
 
-	// h.push('');
-	// for (var k in req.headers)
-	// 	h.push(k + ' : ' + req.headers[k]);
-
 	html = html.replace('__INFO__', h.join('<br>\n'));
 	res.send(html);
 });
 
-
-
+app.post('/token-verify', function (req, res) {
+	var token = req.body['token'];
+	var certPem = fs.readFileSync('certificati/eng-cert.pem',{encoding:'UTF8'});
+	jwt.verify(token, certPem, function(err, decoded){
+		if (err) {
+			console.log('KO', err);
+			res.send('KO: '+err);		
+		}
+		else {
+			var j = JSON.stringify(decoded, null, 2);
+			console.log('OK', err);
+			res.send('OK: '+j);
+		}
+	});
+});
 
 console.log('CONSUMER: go to https://oidc-consumer:5043/home');
 module.exports = {}

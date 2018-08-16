@@ -19,7 +19,7 @@ const clients = [{
 ];
 
 const sslOptions = {
-	key: fs.readFileSync('certificati/eng-key.pem'),
+	key: fs.readFileSync('certificati/eng-key-encrypted.pem'),
 	cert: fs.readFileSync('certificati/eng-cert.pem'),
 	passphrase: 'makkina19'
 };

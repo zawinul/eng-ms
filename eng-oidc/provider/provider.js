@@ -3,10 +3,11 @@ const myData = require('../config-data');
 const express = require('express');
 const http = require('http');
 const https = require('https');
-const keystore = require('./keystore.json');
+const keystore = require('../certificati/keystore-private.json');
 const mongoAdapter = require('./mongodb_adapter');
 const cors = require('cors');
 const myDebug = require('./debug-provider');
+const Account = require('./account');
 
 const configuration = {
 	formats: {
@@ -23,7 +24,14 @@ const configuration = {
 		request: true,
 		revocation: true,
 		sessionManagement: true,
-	}
+	},
+	findById: Account.findById,
+	claims: {
+		// scope: [claims] format
+		openid: ['sub'],
+		email: ['email', 'email_verified'],
+		altro: ['altro','altro_ancora']
+	},
 };
 
 process.env.DEBUG = 'oidc-provider:*'; // funziona veramente?

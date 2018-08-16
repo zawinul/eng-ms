@@ -10,6 +10,9 @@ Promise.all([
   keystore.generate('EC', 'P-384'),
   keystore.generate('EC', 'P-521'),
 ]).then(() => {
-  fs.writeFileSync(path.resolve('keystore.json'), JSON.stringify(keystore.toJSON(true), null, 2));
+  fs.writeFileSync(
+	path.resolve('keystore.json'), 
+	  JSON.stringify(keystore.toJSON(true), null, 2)
+	);
 })
 .catch(console.log);

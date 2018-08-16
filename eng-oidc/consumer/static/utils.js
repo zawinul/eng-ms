@@ -45,7 +45,10 @@ function onData(data) {
 	var id = JSON.parse(atob(data.id_token.split('.')[1]));
 	$('<h4/>').appendTo(e).text('id_token');
 	$('<pre/>').appendTo(e).text(JSON.stringify(id,null,2));
-	$('<button/>').appendTo(e).text('get user info').click(function(){
+	$('<button/>').appendTo(e).text('get user info').click(getUserInfo);
+	$('<button/>').appendTo(e).text('verify token').click(doVerify);
+
+	function getUserInfo() {
 		$.ajax({
 			method:'GET',
 			url:'https://oidc-provider:3043/me',
@@ -58,7 +61,22 @@ function onData(data) {
 			error: function(){
 				console.log('error', arguments);
 			}
-		})
-		data.access_token
-	});
+		});
+	}
+	function doVerify() {
+		$.ajax({
+			method:'POST',
+			url:'token-verify',
+			data: {
+				token: data.id_token
+			},
+			success:function(data) {
+				$('<pre/>').appendTo(e).text(JSON.stringify(data,null,2));
+			},
+			error: function(){
+				console.log('error', arguments);
+			}
+		});
+	}
+
 }
