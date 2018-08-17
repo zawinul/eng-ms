@@ -1,5 +1,5 @@
 const Provider = require('oidc-provider');
-const myData = require('../config-data');
+const fs = require('fs');
 const express = require('express');
 const http = require('http');
 const https = require('https');
@@ -8,6 +8,7 @@ const mongoAdapter = require('./mongodb_adapter');
 const cors = require('cors');
 const myDebug = require('./debug-provider');
 const Account = require('./account');
+const clients = require('../clients.json').clients;
 
 const configuration = {
 	formats: {
@@ -39,7 +40,12 @@ process.env.DEBUG = 'oidc-provider:*'; // funziona veramente?
 var app = express();
 app.use(cors()); // TODO: se possibile rimuovere
 http.createServer(app).listen(3000);
-https.createServer(myData.sslOptions, app).listen(3043);
+const sslOptions = {
+	key: fs.readFileSync('certificati/eng-key-encrypted.pem'),
+	cert: fs.readFileSync('certificati/eng-cert.pem'),
+	passphrase: 'makkina19'
+};
+https.createServer(sslOptions, app).listen(3043);
 
 const oidc = new Provider('https://oidc-provider:3043', configuration);
 oidc.use(async (ctx, next) => {
@@ -48,20 +54,20 @@ oidc.use(async (ctx, next) => {
 	console.log(' ## middleware post', ctx.method); // ...
 });
 
-myDebug(oidc);
+myDebug(oidc); 
 
 oidc.initialize({
-	clients: myData.clients,
+	clients: clients,
 	keystore: keystore,
 	adapter: mongoAdapter
 })
-.then(() => {
-	app.use('/', oidc.callback);
-	console.log('oidc-provider listening on port 3000,\ncheck https://oidc-provider:3043/.well-known/openid-configuration');
-})
-.catch(err => {
-	console.error(err);
-	process.exitCode = 1;
-});
+	.then(() => {
+		app.use('/', oidc.callback);
+		console.log('oidc-provider listening on port 3000,\ncheck https://oidc-provider:3043/.well-known/openid-configuration');
+	})
+	.catch((err) => {
+		console.error(err);
+		process.exitCode = 1;
+	});
 
 module.exports = {}

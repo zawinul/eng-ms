@@ -1,4 +1,10 @@
-
+const express = require('express');
+const myData = require('../config-data');
+const http = require('http');
+const https = require('https');
+const fs = require('fs');
+const jwt = require('jsonwebtoken');
+const bodyParser = require('body-parser');
 
 var app = express();
 app.use(express.json());       // to support JSON-encoded bodies

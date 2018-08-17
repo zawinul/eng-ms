@@ -48,20 +48,20 @@ oidc.use(async (ctx, next) => {
 	console.log(' ## middleware post', ctx.method); // ...
 });
 
-myDebug(oidc);
+myDebug(oidc); 
 
 oidc.initialize({
 	clients: myData.clients,
 	keystore: keystore,
 	adapter: mongoAdapter
 })
-.then(() => {
-	app.use('/', oidc.callback);
-	console.log('oidc-provider listening on port 3000,\ncheck https://oidc-provider:3043/.well-known/openid-configuration');
-})
-.catch(err => {
-	console.error(err);
-	process.exitCode = 1;
-});
+	.then(() => {
+		app.use('/', oidc.callback);
+		console.log('oidc-provider listening on port 3000,\ncheck https://oidc-provider:3043/.well-known/openid-configuration');
+	})
+	.catch((err) => {
+		console.error(err);
+		process.exitCode = 1;
+	});
 
 module.exports = {}
