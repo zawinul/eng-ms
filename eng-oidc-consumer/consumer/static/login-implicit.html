@@ -9,10 +9,10 @@
 	<script>
 		var params = {
 			client_id: 'foo',
-			response_type: 'code',
+			response_type: 'id_token token',
 			//scope: 'openid',
 			scope: 'openid profile email altro ',
-			state: 'pippo-state',
+			state: 'pippo-state-implicit',
 			nonce: 'pippo-nonce', 
 			redirect_uri: 'https://oidc-consumer:5043/callback'
 		};

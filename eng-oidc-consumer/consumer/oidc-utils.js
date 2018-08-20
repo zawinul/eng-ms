@@ -1,5 +1,4 @@
 const express = require('express');
-const myData = require('../config-data');
 const http = require('http');
 const https = require('https');
 const fs = require('fs');
@@ -9,7 +8,7 @@ const querystring = require('querystring');
 const axios = require('axios');
 const base64 = require('base-64');
 
-const certPem = fs.readFileSync('certificati/eng-cert.pem',{encoding:'UTF8'});
+const certPem = fs.readFileSync('certificati/oidc-provider-certificate.pem',{encoding:'UTF8'});
 
 function askToken(code) {
 	var params = {
@@ -18,8 +17,8 @@ function askToken(code) {
 		// client_id:"foo",
 		// client_secret:"bar",
 		response_type: "code", 
-		scope: "openid", 
-		redirect_uri:"https://oidc-consumer:5043/callback"
+		redirect_uri:"https://oidc-consumer:5043/callback",
+		scope: "openid email profile"
 	};
 
 	var p = axios({

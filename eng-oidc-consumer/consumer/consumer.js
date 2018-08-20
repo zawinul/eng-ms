@@ -1,3 +1,4 @@
+console.log('CONSUMER v 1.1');
 const express = require('express');
 const http = require('http');
 const https = require('https');
@@ -14,10 +15,10 @@ app.use(express.urlencoded()); // to support URL-encoded bodies
 app.use(express.static('consumer/static'));
 
 http.createServer(app).listen(5000);
-const sslOptions = {
-	key: fs.readFileSync('certificati/eng-key-encrypted.pem'),
-	cert: fs.readFileSync('certificati/eng-cert.pem'),
-	passphrase: 'makkina19'
+var sslOptions = {
+	cert: fs.readFileSync('certificati/my-https-cert.pem'),
+	key:  fs.readFileSync('certificati/my-https-key-encrypted.pem'),
+	passphrase: 'AWZXH2424-K8'
 };
 
 https.createServer(sslOptions, app).listen(5043);

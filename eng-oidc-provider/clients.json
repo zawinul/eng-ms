@@ -6,6 +6,20 @@
 			"https://oidc-consumer:5043/callback",
 			"https://oidc-consumer:5043/callback-after-auth"
 		],
+		"grant_types":  [
+			"implicit",
+			"authorization_code",
+			"refresh_token"
+		],
+		"response_types":[
+			"code id_token token",
+			"code id_token",
+			"code token",
+			"code",
+			"id_token token",
+			"id_token",
+			"none"
+		],
 		"tokenEndpointAuthMethods":[ 
 			"none",
 			"client_secret_basic",

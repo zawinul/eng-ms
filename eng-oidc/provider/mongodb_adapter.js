@@ -119,6 +119,7 @@ class MongoAdapter {
 		});
 		DB = connection.db(connection.s.options.dbName);
 	}
+
 }
 
 module.exports = MongoAdapter;
