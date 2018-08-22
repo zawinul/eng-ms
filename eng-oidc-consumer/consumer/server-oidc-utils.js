@@ -9,24 +9,43 @@ const axios = require('axios');
 const base64 = require('base-64');
 
 const certPem = fs.readFileSync('certificati/oidc-provider-certificate.pem',{encoding:'UTF8'});
+const STATEMARK = "f8d9v9d89d8f9s7fd9v9sj8f7"
+function urlToSingleSignOn(client) {
+	var x = Math.random();
+	var nonce = base64.encode(Math.random()+"+"+(new Date()).getTime());
+	var state = base64.encode(JSON.stringify({mark:STATEMARK, nonce: nonce, client:client }));
+	var params = {
+		client_id: client,
+		response_type: 'code',
+		//scope: 'openid',
+		scope: 'openid profile email altro ',
+		state: state,
+		nonce: nonce, 
+		redirect_uri: 'https://oidc-consumer:5043/callback'
+	};
+	var a=[];
+	for(var k in params)
+		a.push(k+'='+escape(params[k]));
+	var url = 'https://oidc-provider:3043/auth?'+a.join('&');
+	return url;
+}
 
-function askToken(code) {
+function askToken(code, client) {
 	var params = {
 		grant_type:"authorization_code",
 		code: code, 
-		// client_id:"foo",
-		// client_secret:"bar",
 		response_type: "code", 
 		redirect_uri:"https://oidc-consumer:5043/callback",
 		scope: "openid email profile"
 	};
 
+	var auth = (client=='foo') ? 'foo:bar' : 'foo2:bar2';
 	var p = axios({
 		method: 'post',
 		url: 'https://oidc-provider:3043/token', 
 		data: querystring.stringify(params),
 		headers: {
-			Authorization: "Basic "+base64.encode("foo:bar")
+			Authorization: "Basic "+base64.encode(auth)
 		}
 	})
 	.then(response=>{
@@ -85,5 +104,7 @@ function tokenVerify(token, pem) {
 }
 
 module.exports = {
-	askToken:askToken
+	askToken:askToken,
+	urlToSingleSignOn: urlToSingleSignOn,
+	stateMark: STATEMARK
 };

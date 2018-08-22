@@ -5,36 +5,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>oidc consumer login</title>
-	<script src="jquery-3.2.1.js"></script>
-	<script>
-		var params = {
-			client_id: 'foo',
-			response_type: 'code',
-			//scope: 'openid',
-			scope: 'openid profile email altro ',
-			state: 'pippo-state',
-			nonce: 'pippo-nonce', 
-			redirect_uri: 'https://oidc-consumer:5043/callback'
-		};
-		$(function() {
-			var a=[];
-			for(var k in params)
-				a.push(k+'='+escape(params[k]));
-			var u = 'https://oidc-provider:3043/auth?'+a.join('&');
-			$('#authlink').attr('href', u);
-			$('#authdesc').html(u);
-
-			//setTimeout(function(){ location.href = u;}, 5000)
-		});
-	</script>
 </head>
 <body>
 	<h4>this is </h4><h3>consumer login page</h3>
 		
-	<a href="https://github.com/panva/node-oidc-provider-example/tree/master/00-oidc-minimal">help simple consumer</a>, 
-	<a href="https://github.com/panva/node-oidc-provider/tree/4085e3fa3d0cf4b875fe19bd780cd750c5b07c36">help provider</a>,
-	<a href="https://oidc-provider:3043/.well-known/openid-configuration">conf</a>
-	<hr>
-	<a id="authlink">autentica</a> // <span id ="authdesc"></span>
+	<a href="do-login">login foo</a><br>
+	<a href="do-login2">login foo2</a><br>
 </body>
 </html>

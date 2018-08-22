@@ -1,4 +1,5 @@
-const Provider = require('oidc-provider');
+//const Provider = require('oidc-provider');
+const Provider = require('../oidc-provider/lib/');
 const fs = require('fs');
 const express = require('express');
 const http = require('http');
@@ -118,7 +119,7 @@ app.get('/interaction/:grant', async (req, res, next) => {
 		return res.render('interaction', {
 			client,
 			details,
-			title: 'Authorize',
+			title: 'Authorize bis',
 			params: querystring.stringify(details.params, ',<br/>', ' = ', {
 				encodeURIComponent: value => value,
 			}),
