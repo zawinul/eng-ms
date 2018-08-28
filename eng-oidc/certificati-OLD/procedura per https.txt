@@ -1,4 +1,0 @@
-help: https://aghassi.github.io/ssl-using-express-4/
-
-"C:\Program Files (x86)\GnuWin32\bin\openssl.exe" req -x509 -newkey rsa:2048 -keyout eng-key.pem -out eng-cert.pem -days 3650
-(crea i file eng-cert.pem e eng-key.pem, ho usato la passphrase makkina19)

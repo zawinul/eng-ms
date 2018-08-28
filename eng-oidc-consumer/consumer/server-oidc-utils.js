@@ -9,20 +9,24 @@ const axios = require('axios');
 const base64 = require('base-64');
 
 const certPem = fs.readFileSync('certificati/oidc-provider-certificate.pem',{encoding:'UTF8'});
-const STATEMARK = "f8d9v9d89d8f9s7fd9v9sj8f7"
-function urlToSingleSignOn(client) {
+const STATEMARK = "f8d9v9d89d8f9s7fd9v9sj8f7"; // magic, può essere una stringa qualsiasi
+
+function urlToSingleSignOn(client, callerParams) {
 	var x = Math.random();
 	var nonce = base64.encode(Math.random()+"+"+(new Date()).getTime());
-	var state = base64.encode(JSON.stringify({mark:STATEMARK, nonce: nonce, client:client }));
+	var state = base64.encode(JSON.stringify({mark:STATEMARK, nonce: nonce, client:client, p:callerParams }));
 	var params = {
-		client_id: client,
+		//client_id: client,
 		response_type: 'code',
 		//scope: 'openid',
-		scope: 'openid profile email altro ',
 		state: state,
 		nonce: nonce, 
 		redirect_uri: 'https://oidc-consumer:5043/callback'
 	};
+	if (client) {
+		params.client_id = client;
+		params.scope = 'openid profile email altro ';
+	}
 	var a=[];
 	for(var k in params)
 		a.push(k+'='+escape(params[k]));

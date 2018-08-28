@@ -5,8 +5,10 @@ const https = require('https');
 const fs = require('fs');
 const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
-const oidc = require('./server-oidc-utils');
 const base64 = require('base-64');
+const path = require('path');
+const oidc = require('./server-oidc-utils');
+
 
 // serve a fare in modo che nelle chiamate https siano accettati anche certificati autofirmati
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
@@ -15,6 +17,8 @@ var app = express();
 app.use(express.json());       // to support JSON-encoded bodies
 app.use(express.urlencoded()); // to support URL-encoded bodies
 app.use(express.static('consumer/static'));
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 http.createServer(app).listen(5000);
 var sslOptions = {
@@ -25,27 +29,22 @@ var sslOptions = {
 
 https.createServer(sslOptions, app).listen(5043);
 
-// app.get('/OLD-callback', function (req, res) {
-// 	var html = fs.readFileSync('consumer/static/callback.html',{encoding:'UTF8'});
-
-// 	var h = [];
-// 	h.push('<b>' + req.originalUrl + '</b><br><br>\n');
-// 	for (var k in req.query)
-// 		h.push('<b style="color:#800000">' + k + ' : ' + req.query[k] + '</b>');
-
-// 	html = html.replace('__INFO__', h.join('<br>\n'));
-// 	res.send(html);
-// });
-
-app.get('/do-login', function (req, res) {
-	var url = oidc.urlToSingleSignOn('foo');
+app.get('/do-login-foo', function (req, res) {
+	var url = oidc.urlToSingleSignOn('foo', req.query);
 	console.log('redirecting to '+url);
 	res.redirect(url);
 });
 
 
-app.get('/do-login2', function (req, res) {
-	var url = oidc.urlToSingleSignOn('foo2');
+app.get('/do-login-foo2', function (req, res) {
+	var url = oidc.urlToSingleSignOn('foo2', req.params);
+	console.log('redirecting to '+url);
+	res.redirect(url);
+});
+
+
+app.get('/do-login', function (req, res) {
+	var url = oidc.urlToSingleSignOn();
 	console.log('redirecting to '+url);
 	res.redirect(url);
 });
@@ -59,29 +58,15 @@ app.get('/callback', function (req, res) {
 	p.then(data=>{
 		if (data.userId.nonce!=state.nonce)
 			throw "errore nello stato ritornato";
-		var msg = JSON.stringify(data, null,2);
-		res.send("<html><body><pre>"+msg+"</pre></body></html>");
-		return data;
+		var ret = {params:state.p, data:data};
+
+		return res.render('callback', {data:ret});
 	}).catch(error=>{
 		res.send("ERROR: "+JSON.stringify(error));
 	});
 });
 
-// app.post('/token-verify', function (req, res) {
-// 	var token = req.body['token'];
-// 	var certPem = fs.readFileSync('certificati/eng-cert.pem',{encoding:'UTF8'});
-// 	jwt.verify(token, certPem, function(err, decoded){
-// 		if (err) {
-// 			console.log('KO', err);
-// 			res.send('KO: '+err);		
-// 		}
-// 		else {
-// 			var j = JSON.stringify(decoded, null, 2);
-// 			console.log('OK', err);
-// 			res.send('OK: '+j);
-// 		}
-// 	});
-// });
+
 
 console.log('CONSUMER: go to https://oidc-consumer:5043/');
 module.exports = {}

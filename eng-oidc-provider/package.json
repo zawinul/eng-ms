@@ -7,8 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "base-64": "^0.1.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
+    "crypto": "^1.0.1",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "express-urlrewrite": "^1.2.0",
@@ -19,6 +21,7 @@
     "mongodb": "^3.1.1",
     "morgan": "^1.9.0",
     "oidc-provider": "^4.1.0",
+    "path": "^0.12.7",
     "querystring": "^0.2.0",
     "rsa-pem-to-jwk": "^1.1.3"
   },

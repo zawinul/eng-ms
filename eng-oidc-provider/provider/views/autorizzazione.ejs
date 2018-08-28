@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Sign-in</title>
+	<title>Richiesta di autorizzazione</title>
 	<style>
 		@import url(https://fonts.googleapis.com/css?family=Roboto:400,100);
 
@@ -99,16 +99,6 @@
 			color: #999;
 			font-size: 16px;
 		}
-
-		.grant-debug {
-			font-family: Fixed, monospace;
-			width: 100%;
-			text-align: center;
-			font-size: 12px;
-			color: #999;
-			padding-top: 10px;
-		}
-
 		button {
 			cursor: pointer;
 		}
@@ -117,35 +107,53 @@
 </head>
 
 <body>
-	<h4>questo è _layout</h4>
 	<div class="login-card">
 		<h1>
-			<%= title %>
+			Richiesta di autorizzazione all'uso dei tuoi dati
 		</h1>
 		<div class="login-client-image">
 			<% if (client.logoUri) { %><img src="<%= client.logoUri %>"><% } %>
 		</div>
-		<div style="border:1px solid gray; padding:8px; margin:8px">
-			<h4>questo è il body</h4>
-				<%- body %>
-		</div>
+
+
+		<!-- body -->
+		<form autocomplete="off" action="/interaction/<%= details.uuid %>/confirm" method="post">
+			<input type="hidden" name="uuid" value="<%= details.uuid %>"/>
+			<button autofocus type="submit" class="login login-submit">Continue</button>
+		
+		
+				  
+			<hr>
+			l'applicazione <b><%= params.client_id %></b> chiede la tua autorizzazione per avere 
+			accesso alle seguenti informazioni che ti riguardano:<br>
+			<span style="font-size:.8em">se lasci il check vuol dire che autorizzi</span><br>
+			<% for(var i=0; i<scopes.length; i++) {%>
+				<label>
+					<input type="checkbox" name="scope_<%= scopes[i] %>" 
+						value="yes" checked="yes"><%= scopes[i] %><br>
+				</label>	
+			<%}%>
+			<hr>
+
+		
+		</form>
+		  
+
 		<div class="login-help">
 				<a href="<%= details.returnTo %>">[ Cancel ]</a>
 				<% if (client.tosUri) { %><a href="<%= client.tosUri %>">[ Terms of Service ]</a><% } %>
-						<% if (client.policyUri) { %><a href="<%= client.policyUri %>">[ Privacy Policy ]</a><% } %>
+				<% if (client.policyUri) { %><a href="<%= client.policyUri %>">[ Privacy Policy ]</a><% } %>
 			</div>
 	</div>
-	<div class="login-card">
-		<div class="grant-debug">
-			<%= details.uuid %>
-		</div>
-		<div class="grant-debug">
-			<%- params %>
-		</div>
-		<div class="grant-debug">
-			<%- interaction %>
-		</div>
-	</div>
+
+	<pre style="text-align: left"><%=  
+		JSON.stringify({
+			uuid:details.uuid,
+			params:params,
+			interaction:interaction
+		},null,1);
+	%></pre>
+
 </body>
 
 </html>

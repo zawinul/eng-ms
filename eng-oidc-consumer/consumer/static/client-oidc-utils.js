@@ -1,22 +1,27 @@
-function jumpToSingleSignOn() {
-	var params = {
-		client_id: 'foo',
-		response_type: 'code',
-		//scope: 'openid',
-		scope: 'openid profile email altro ',
-		state: 'pippo-state',
-		nonce: 'pippo-nonce', 
-		redirect_uri: 'https://oidc-consumer:5043/callback'
-	};
-	$(function() {
-		var a=[];
-		for(var k in params)
-			a.push(k+'='+escape(params[k]));
-		var u = 'https://oidc-provider:3043/auth?'+a.join('&');
-		$('#authlink').attr('href', u);
-		$('#authdesc').html(u);
-	}
+
+function onCallbackPageLoaded() {
+	alert('onCallbackPageLoaded()');
+	$('.ret-data').text(JSON.stringify(data,null,2));
 }
+// function jumpToSingleSignOn() {
+// 	var params = {
+// 		client_id: 'foo',
+// 		response_type: 'code',
+// 		//scope: 'openid',
+// 		scope: 'openid profile email altro ',
+// 		state: 'pippo-state',
+// 		nonce: 'pippo-nonce', 
+// 		redirect_uri: 'https://oidc-consumer:5043/callback'
+// 	};
+// 	$(function() {
+// 		var a=[];
+// 		for(var k in params)
+// 			a.push(k+'='+escape(params[k]));
+// 		var u = 'https://oidc-provider:3043/auth?'+a.join('&');
+// 		$('#authlink').attr('href', u);
+// 		$('#authdesc').html(u);
+// 	}
+// }
 
 
 // var code;

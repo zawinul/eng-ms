@@ -5,6 +5,12 @@ const { snakeCase } = require('lodash');
 const mongoURI = 'mongodb://localhost:27017/eng-ms';
 let DB;
 
+const VERBOSE = false;
+function mylog() {
+	if (VERBOSE)
+		console.log.apply(console, arguments);
+}
+
 const grantable = new Set([
 	'access_token',
 	'authorization_code',
@@ -45,7 +51,7 @@ const collections = new CollectionSet();
 
 class MongoAdapter {
 	constructor(name) {
-		console.log('MONGO constructor: '+name);
+		mylog('MONGO constructor: '+name);
 		this.name = snakeCase(name);
 		collections.add(this.name);
 	}
@@ -53,7 +59,7 @@ class MongoAdapter {
 	// note: the payload for Session model may contain client_id as keys, make sure you do not use
 	//   dots (".") in your client_id value charset.
 	async upsert(_id, payload, expiresIn) {
-		console.log('MONGO upsert: '+this.name);
+		mylog('MONGO upsert: '+this.name);
 		
 		let expiresAt;
 
@@ -71,18 +77,18 @@ class MongoAdapter {
 	}
 
 	async find(_id) {
-		console.log('MONGO find: '+this.name+', '+_id);
+		mylog('MONGO find: '+this.name+', '+_id);
 
 		return this.coll().find({ _id }).limit(1).next();
 	}
 
 	async findByUserCode(userCode) {
-		console.log('MONGO findByUserCode: '+this.name+', '+userCode);
+		mylog('MONGO findByUserCode: '+this.name+', '+userCode);
 		return this.coll().find({ userCode }).limit(1).next();
 	}
 
 	async destroy(_id) {
-		console.log('MONGO destroy: '+this.name+', '+_id);
+		mylog('MONGO destroy: '+this.name+', '+_id);
 		const found = await this.coll().findOneAndDelete({ _id });
 		if (found.value && found.value.grantId) {
 			const promises = [];
@@ -98,22 +104,22 @@ class MongoAdapter {
 	}
 
 	async consume(_id) {
-		console.log('MONGO consume: '+this.name+', '+_id);
+		mylog('MONGO consume: '+this.name+', '+_id);
 		await this.coll().findOneAndUpdate({ _id }, { $currentDate: { consumed: true } });
 	}
 
 	coll(name) {
-		//console.log('MONGO coll: '+this.name+', '+name);
+		//mylog('MONGO coll: '+this.name+', '+name);
 		return this.constructor.coll(name || this.name);
 	}
 
 	static coll(name) {
-		console.log('static MONGO coll: '+name);
+		mylog('static MONGO coll: '+name);
 		return DB.collection(name);
 	}
 
 	static async connect() {
-		console.log('static MONGO connect');
+		mylog('static MONGO connect');
 		const connection = await MongoClient.connect(mongoURI, {
 			useNewUrlParser: true,
 		});
