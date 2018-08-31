@@ -36,7 +36,7 @@ function doLogin() {
 	var params = {
 		client_id: 'foo',
 		response_type: 'code',
-		scope: 'openid profile email altro ',
+		scope: 'openid profile  altro ',
 		state: rndState,
 		nonce: rndNonce, 
 		redirect_uri: 'https://oidc-provider:3043/callback'

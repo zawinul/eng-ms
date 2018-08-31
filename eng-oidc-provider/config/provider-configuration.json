@@ -1,0 +1,59 @@
+{
+	"formats": {
+		"default": "opaque",
+		"AccessToken": "jwt"
+	},
+	"features": {
+		"devInteractions": false,
+		"claimsParameter": true,
+		"conformIdTokenClaims": true,
+		"discovery": true,
+		"encryption": true,
+		"introspection": true,
+		"registration": true,
+		"request": true,
+		"revocation": true,
+		"sessionManagement": true
+	},
+	"findById": "Account.findById",
+	"claims": {
+		"openid": [
+			"sub"
+		],
+		"email": [
+			"email",
+			"email_verified"
+		],
+		"profile": [
+			"organigramma",
+			"abilitazioni"
+		],
+		"dati_applicativi": [
+			"organigramma",
+			"abilitazioni"
+		],
+		"altro": [
+			"altro",
+			"altro_ancora"
+		],
+		"servizio1": [],
+		"servizio2": [],
+		"servizio3": [],
+		"servizio4": [],
+		"servizio5": [],
+		"servizio6": [],
+		"servizio7": [],
+		"servizio8": [],
+		"servizio9": [],
+		"servizio10": []
+	},
+	"logoutSource": "logoutSource",
+	"postLogoutRedirectUri": "postLogoutRedirectUri",
+	"cookies": {
+		"keys": [
+			"pippo8768783204958304598",
+			"pluto9058946740587529348",
+			"paperino050344027692846598"
+		]
+	}
+}

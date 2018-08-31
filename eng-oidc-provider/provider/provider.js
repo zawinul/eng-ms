@@ -8,15 +8,19 @@ const keystore = require('../certificati/keystore-private.json');
 const mongoAdapter = require('./mongodb_adapter');
 const myDebug = require('./debug-provider');
 const Account = require('./account');
-const clients = require('../clients.json').clients;
+const clients = require('../config/clients.json').clients;
 const helmet = require('helmet');
 const { urlencoded } = require('express'); // eslint-disable-line import/no-unresolved
 const body = urlencoded({ extended: false });
 const path = require('path');
 const ejs = require('ejs');
 const base64 = require('base-64');
+const debug = require('debug');
+const log = debug('provider');
 
-process.env.DEBUG = 'oidc-provider:*'; // funziona veramente?
+//log.log = console.log.bind(console); // don't forget to bind to console!
+debug.log = console.log.bind(console);
+log('pippo pluto paperino');
 
 var configuration; 
 var app;
@@ -44,41 +48,15 @@ function getConfiguration() {
 		return '/post-logout?q='+x;
 	}
 
-	var c = {
-		formats: {
-			default: 'opaque',
-			AccessToken: 'jwt',
-		},
-		features: {
-			devInteractions: false,
-			claimsParameter: true,
-			conformIdTokenClaims: true,
-			discovery: true,
-			encryption: true,
-			introspection: true,
-			registration: true,
-			request: true,
-			revocation: true,
-			sessionManagement: true,
-		},
+	var conf = require('../config/provider-configuration.json');
+
+	var extra = {
 		findById: Account.findById,
-		claims: {
-			// scope: [claims] format
-			openid: ['sub'],
-			email: ['email', 'email_verified'],
-			altro: ['altro', 'altro_ancora']
-		},
 		logoutSource: logoutSource,
-		postLogoutRedirectUri: postLogoutRedirectUri,
-		cookies: {
-			keys: [
-				'pippo8768783204958304598', 
-				'pluto9058946740587529348', 
-				'paperino050344027692846598'
-			]
-		}
+		postLogoutRedirectUri: postLogoutRedirectUri
 	};
-	return c;
+	Object.assign(conf, extra);
+	return conf;
 }
 
 
@@ -99,14 +77,15 @@ function startWebServer() {
 	routing();
 
 	https.createServer(sslOptions, app).listen(3043);
+	return app;
 }
 
 function initOidc() {
 	oidc = new Provider('https://oidc-provider:3043', configuration);
 	oidc.use(async (ctx, next) => {
-		console.log(' ** middleware pre', ctx.method, ctx.path);	// ...
+		log(' ** middleware pre', ctx.method, ctx.path);	// ...
 		await next();
-		console.log(' ## middleware post', ctx.method); // ...
+		log(' ## middleware post', ctx.method); // ...
 	});
 	
 	myDebug(oidc);
@@ -118,10 +97,11 @@ function initOidc() {
 	})
 	.then(() => {
 		app.use('/', oidc.callback);
-		console.log('oidc-provider listening on port 3000,\ncheck https://oidc-provider:3043/.well-known/openid-configuration');
+		log('oidc-provider listening on port 3000,\ncheck https://oidc-provider:3043/.well-known/openid-configuration');
 	})
 	.catch((err) => {
-		console.error(err);
+		log(err);
+		log(err.stack);
 		process.exitCode = 1;
 	});
 	return oidc;	
@@ -141,7 +121,7 @@ function routing() {
 		try {
 			const details = await oidc.interactionDetails(req);
 			const client = await oidc.Client.find(details.params.client_id);
-			console.log(details.interaction.error);
+			log(details.interaction.error);
 			var scopes = details.params.scope.split(' ');
 			var pageData = {
 				client,
@@ -163,15 +143,15 @@ function routing() {
 	app.post('/interaction/:grant/confirm', body, async (req, res, next) => {
 		// sono di ritorno da una pagina di autorizzazione
 		try {
-			var codes = [];
-			for (var k in req.body) {
-				if (k.indexOf('scope_')==0 && req.body[k]=='yes') 
-					codes.push(k.substring(6));
-			}
+			// var codes = [];
+			// for (var k in req.body) {
+			// 	if (k.indexOf('scope_')==0 && req.body[k]=='yes') 
+			// 		codes.push(k.substring(6));
+			// }
 			const result = { 
-				consent:  {
-					scope: codes.join(' ')
-				} 
+				// consent:  {
+				// 	scope: codes.join(' ')
+				// } 
 			};
 			const details = await oidc.interactionDetails(req);
 			await oidc.interactionFinished(req, res, result);
@@ -186,11 +166,11 @@ function routing() {
 		try {
 			var {login, password} = req.body;
 			const account = await Account.findByLogin(login);
-			var codes = [];
-			for (var k in req.body) {
-				if (k.indexOf('scope_')==0 && req.body[k]=='yes') 
-					codes.push(k.substring(6));
-			}
+			// var codes = [];
+			// for (var k in req.body) {
+			// 	if (k.indexOf('scope_')==0 && req.body[k]=='yes') 
+			// 		codes.push(k.substring(6));
+			// }
 			var result;
 			if (!account) {
 				result = {
@@ -208,10 +188,14 @@ function routing() {
 							amr: ['pwd'],
 							remember: !!req.body.remember,
 							ts: Math.floor(Date.now() / 1000),
+							custom1 : 'c1' 
 						},
-						consent: {
-							scope: codes.join(' ')
+						meta: {
+							custom2 : 'c2'
 						}
+						// ,consent: {
+						// 	scope: codes.join(' ')
+						// }
 					};
 				}
 				else {
@@ -230,4 +214,4 @@ function routing() {
 	
 }
 
-module.exports = {}
+main();

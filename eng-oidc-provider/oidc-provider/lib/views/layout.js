@@ -39,7 +39,7 @@ module.exports = `<!DOCTYPE html>
         position: relative;
       }
 
-      .login-card input[type=text], input[type=email], input[type=password] {
+      .login-card input[type=text], input[type=], input[type=password] {
         height: 44px;
         font-size: 16px;
         width: 100%;

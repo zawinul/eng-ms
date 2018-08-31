@@ -16,17 +16,15 @@ function urlToSingleSignOn(client, callerParams) {
 	var nonce = base64.encode(Math.random()+"+"+(new Date()).getTime());
 	var state = base64.encode(JSON.stringify({mark:STATEMARK, nonce: nonce, client:client, p:callerParams }));
 	var params = {
-		//client_id: client,
 		response_type: 'code',
-		//scope: 'openid',
 		state: state,
 		nonce: nonce, 
+		client_id: client,
+		scope: 'openid profile dati_applicativi altro servizio1 servizio5',
+		//claim: 'servizio1 servizio2',
+		//claims: 'servizio1 servizio2',
 		redirect_uri: 'https://oidc-consumer:5043/callback'
 	};
-	if (client) {
-		params.client_id = client;
-		params.scope = 'openid profile email altro ';
-	}
 	var a=[];
 	for(var k in params)
 		a.push(k+'='+escape(params[k]));
@@ -37,10 +35,10 @@ function urlToSingleSignOn(client, callerParams) {
 function askToken(code, client) {
 	var params = {
 		grant_type:"authorization_code",
-		code: code, 
-		response_type: "code", 
+		code: code,
+		response_type: "code",
 		redirect_uri:"https://oidc-consumer:5043/callback",
-		scope: "openid email profile"
+		scope: "openid email profile dati_applicativi altro servizio1 servizio5 "
 	};
 
 	var auth = (client=='foo') ? 'foo:bar' : 'foo2:bar2';
@@ -61,7 +59,9 @@ function askToken(code, client) {
 		.then(results => {
 			return {
 				userId: results[0],
-				userInfo: results[1]
+				userInfo: results[1],
+				id_token: response.data.id_token,
+				access_token: response.data.access_token
 			}
 		});
 	})

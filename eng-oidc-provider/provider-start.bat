@@ -1,2 +1,2 @@
-set DEBUG=oidc-provider:*
+set DEBUG=*
 node main

@@ -1,4 +1,3 @@
-const assert = require('assert');
 const uuidv1 = require('uuid/v1');
 const crypto = require('crypto');
 
@@ -14,19 +13,33 @@ const USERSdata = [
 		login: 'paolo',
 		passwordHash: hash('aaa'),
 		claims : {
-			email: 'foo@example.com',
+			email : 'foo@example.com',
 			email_verified: true,
-			altro: 'aaa'
-		}
+			altro: 'aaa',
+			organigramma: [
+				{ societa:'pippo', dipartimento:'pluto', ruolo:'direttore'},
+				{ societa:'pluto', dipartimento:'paperino', ruolo:'consultatore'}
+			],
+			abilitazioni: [
+				{ sistema:'protocollo', ambito:'affari legali', profilo:'inserimento dati'}
+			]
+		},
 	},
 	{
 		accountId: 'c2ac2b4a-2262-4e2f-847a-a40dd3c4dcd5',
 		login: 'pippo',
 		passwordHash: hash('bbb'),
 		claims : {
-			email: 'bar@example.com',
+			email : 'bar@example.com',
 			email_verified: false,
-			altro: 'bbb'
+			altro: 'bbb',
+			organigramma: [
+				{ societa:'acme', dipartimento:'pluto', ruolo:'direttore'},
+				{ societa:'acme', dipartimento:'paperino', ruolo:'consultatore'}
+			],
+			abilitazioni: [
+				{ sistema:'protocollo', ambito:'affari legali', profilo:'inserimento dati' }
+			]
 		}
 	}
 ];

@@ -41,7 +41,7 @@
 		}
 
 		.login-card input[type=text],
-		input[type=email],
+		input[type=],
 		input[type=password] {
 			height: 44px;
 			font-size: 16px;
@@ -120,17 +120,18 @@
 			<input type="hidden" name="uuid" value="<%= details.uuid %>"/>
 			<input required type="text" name="login" placeholder="Enter any login" <% if (!details.params.login_hint) { %>autofocus="on"<% } else { %> value="<%= details.params.login_hint %>" <% } %>>
 			<input required type="password" name="password" placeholder="and password" <% if (details.params.login_hint) { %>autofocus="on"<% } %>>
-		  
+			<br>
 			<label><input type="checkbox" name="remember" value="yes" checked="yes">Stay signed in</label>
 		  
 			<hr>
 			l'applicazione <b><%= params.client_id %></b> chiede la tua autorizzazione per avere 
 			accesso alle seguenti informazioni che ti riguardano:<br>
-			<span style="font-size:.8em">se lasci il check vuol dire che autorizzi</span><br>
+			<!-- <span style="font-size:.8em">se lasci il check vuol dire che autorizzi</span><br> -->
 			<% for(var i=0; i<scopes.length; i++) {%>
 				<label>
-					<input type="checkbox" name="scope_<%= scopes[i] %>" 
-						value="yes" checked="yes"><%= scopes[i] %><br>
+					<!-- <input type="checkbox" name="scope_<%= scopes[i] %>" 
+						value="yes" checked="yes"> -->
+					<%= scopes[i] %><br>
 				</label>	
 			<%}%>
 			<hr>

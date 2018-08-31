@@ -1,6 +1,6 @@
 
 function onCallbackPageLoaded() {
-	alert('onCallbackPageLoaded()');
+	data.access_payload = JSON.parse(atob(data.data.access_token.split('.')[1]));
 	$('.ret-data').text(JSON.stringify(data,null,2));
 }
 // function jumpToSingleSignOn() {
@@ -8,7 +8,7 @@ function onCallbackPageLoaded() {
 // 		client_id: 'foo',
 // 		response_type: 'code',
 // 		//scope: 'openid',
-// 		scope: 'openid profile email altro ',
+// 		scope: 'openid profile  altro ',
 // 		state: 'pippo-state',
 // 		nonce: 'pippo-nonce', 
 // 		redirect_uri: 'https://oidc-consumer:5043/callback'

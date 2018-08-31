@@ -468,7 +468,7 @@ module.exports = function getSchema(provider) {
       if (this.contacts) {
         this.contacts.forEach((contact) => {
           if (!W3CEmailRegExp.exec(contact)) {
-            invalidate('contacts can only contain email addresses');
+            invalidate('contacts can only contain  addresses');
           }
         });
       }

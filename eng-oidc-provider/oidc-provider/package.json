@@ -24,7 +24,7 @@
   "_where": "c:\\Workspace\\eng-ms\\eng-oidc-provider",
   "author": {
     "name": "Filip Skokan",
-    "email": "panva.ip@gmail.com"
+    "": "panva.ip@gmail.com"
   },
   "bugs": {
     "url": "https://github.com/panva/node-oidc-provider/issues"
