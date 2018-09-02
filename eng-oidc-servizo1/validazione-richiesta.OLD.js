@@ -49,21 +49,8 @@ function initCache() {
 	infoCache.set(testToken, testUserInfo,  24*60*60*1000);
 }
 
-async function validazioneRichiesta(req, serviceName) {
-	
-	async function main() {
-	
-		if (req.headers["reset-authorization-cache"])  
-			initCache();
-
-		var token = getToken();
-		var validated = await validate(token);
-		var userInfo = await userInfoFromToken(token);
-		req.accessToken = token;
-		req.decodedAccessToken = validated;
-		req.userInfo = userInfo;
-		return 'OK';
-	}
+function validazioneRichiesta(req, serviceName) {
+	var token;
 
 	function getToken() { // => token
 		var auth = req.headers.Authorization || req.headers.authorization;
@@ -74,9 +61,10 @@ async function validazioneRichiesta(req, serviceName) {
 			if (splits.length>=2 && splits[0]=='Bearer')
 			token = splits[1];
 		}
-		if (!token)
-			throw new Error("la richiesta dovrebbe contenere l'header 'Authorization: Bearer <accessToken>'");
-		return token;
+		if (token)
+			return Promise.resolve(token);
+		else
+			return 	Promise.reject("la richiesta dovrebbe contenere l'header 'Authorization: Bearer <accessToken>'");
 	}
 
 	function validate(token) { // => decoded data
@@ -129,7 +117,30 @@ async function validazioneRichiesta(req, serviceName) {
 		})
 	}
 
-	return main();
+	function getAll(token) {
+		return Promise.all([
+			token,
+			validate(token),
+			userInfoFromToken(token)
+		]);
+	}
+	
+	function saveData([token, decoded, userInfo]) {
+		req.accessToken = token;
+		req.decodedAccessToken = decoded;
+		req.userInfo = userInfo;
+		return token;
+	}
+
+	function valida() {
+		console.log('valida credenziali');
+		if (req.headers["reset-authorization-cache"])  
+			initCache();
+
+		return getToken().then(getAll).then(saveData);
+	}
+
+	return valida();
 }
 
 init();

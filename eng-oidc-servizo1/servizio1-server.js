@@ -1,4 +1,4 @@
-console.log('CONSUMER v 1.1');
+console.log('SERVIZIO1 v 1.1');
 const express = require('express');
 const http = require('http');
 const https = require('https');
@@ -26,27 +26,28 @@ function initExpress() {
 	};
 
 	https.createServer(sslOptions, app).listen(4143);
-}
 
-var cnt = 1;
-function routings() {
-
+	// validazione 
 	app.use(function(req, res, next) {
-		console.log('app.use');
 		validazioneRichiesta(req, 'servizio1')
-			.then(data=>{
-				console.log('ok proseguo');
+			.then(()=>{
+				console.log('validazione ok');
 				next();
-			})
+			})  
 			.catch(error=>{
 				res.status(400).send(error);
 			});
 	});
 
-	app.get('/pippo', function(req, res) {
+}
+
+var cnt = 1;
+function routings() {
+
+
+	app.get('/me', function(req, res) {
 		console.log('get /pippo '+cnt);
-		res.status(200).send('OK '+cnt++ + 
-		"<pre>"+JSON.stringify(req.userInfo,null,2) +"</pre>");
+		res.status(200).send(JSON.stringify(req.userInfo,null,2));
 	});
 
 }
@@ -54,4 +55,4 @@ function routings() {
 
 initExpress();
 routings();
-console.log('service started on http://oidc-servizio1/4100 o https://oidc-servizio1/4143');
+console.log('service started on http://oidc-servizio1/4100 and https://oidc-servizio1/4143');
