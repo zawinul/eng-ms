@@ -1,0 +1,15 @@
+{
+  "name": "eng-send-mail",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "base-64": "^0.1.0",
+    "nodejs-nodemailer-outlook": "^1.0.8"
+  }
+}

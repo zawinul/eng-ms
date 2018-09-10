@@ -1,0 +1,7 @@
+{
+  "service": {
+    "name": "socat",
+    "port": 9000,
+    "connect": { "proxy": {} }
+  }
+}

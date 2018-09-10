@@ -20,7 +20,6 @@ const log = debug('provider');
 
 //log.log = console.log.bind(console); // don't forget to bind to console!
 debug.log = console.log.bind(console);
-log('pippo pluto paperino');
 
 var configuration; 
 var app;
@@ -33,7 +32,8 @@ function main() {
 }
 
 function getConfiguration() {
-	
+
+	var conf = require('../config/provider-configuration.json');
 	
 	async function logoutSource(ctx, form) {
 		var p = path.resolve('./provider/views/logout.ejs');
@@ -47,8 +47,6 @@ function getConfiguration() {
 		var x = base64.encode(JSON.stringify(callerParams));
 		return '/post-logout?q='+x;
 	}
-
-	var conf = require('../config/provider-configuration.json');
 
 	var extra = {
 		findById: Account.findById,
@@ -212,6 +210,26 @@ function routing() {
 		}
 	});
 	
+
+
+	// attenzione: solo per debug
+	const instance = require('../oidc-provider/lib/helpers/weak_cache.js');
+	const JWT = require('../oidc-provider/lib/helpers/jwt');
+
+	app.post('/genera-token', body, async (req, res, next) => {
+
+		try {
+			var payload = JSON.parse(req.body.payload) || {};
+			var ks = instance(oidc).keystore;
+			const key = ks.get({alg: 'RS256', use: "sig"} );
+			var y = await JWT.sign(payload, key, 'RS256', {});
+
+			res.send(y);
+		}
+		catch(e) {
+			console.log(e);
+		}
+	});
 }
 
 main();

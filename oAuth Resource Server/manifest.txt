@@ -1,0 +1,50 @@
+Users\Training\Desktop\Courses\Spring Cloud\Lessons\1000\1004 Resource Server Setup\oAuth Resource Server
+   │
+   ├[.mvn]
+   │   │
+   │   └[wrapper]
+   │       │
+   │       ├maven-wrapper
+   │       └maven-wrapper
+   ├[.settings]
+   │   │
+   │   ├org.eclipse.core.resources
+   │   ├org.eclipse.jdt.core
+   │   ├org.eclipse.m2e.core
+   │   └org.eclipse.wst.common.project.facet.core
+   ├[src]
+   │   │
+   │   ├[main]
+   │   │   │
+   │   │   ├[java]
+   │   │   │   │
+   │   │   │   └[com]
+   │   │   │       │
+   │   │   │       └[oreilly]
+   │   │   │           │
+   │   │   │           └[cloud]
+   │   │   │               │
+   │   │   │               ├AuthorizationServerConfig
+   │   │   │               ├SpringMicroservicesOauthServerApplication
+   │   │   │               └WebSecurityConfig
+   │   │   └[resources]
+   │   │       │
+   │   │       └application
+   │   └[test]
+   │       │
+   │       └[java]
+   │           │
+   │           └[com]
+   │               │
+   │               └[oreilly]
+   │                   │
+   │                   └[cloud]
+   │                       │
+   │                       └SpringMicroservicesOauthServerApplicationTests
+   ├
+   ├
+   ├
+   ├manifest
+   ├mvnw
+   ├mvnw
+   └pom

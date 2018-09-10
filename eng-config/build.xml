@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="eng-config">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../eclipse/"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.8"/>
+    <property name="source" value="1.8"/>
+    <path id="Maven Dependencies.libraryclasspath">
+        <pathelement location="../../../mavenrepo/org/springframework/cloud/spring-cloud-config-server/2.0.0.M8/spring-cloud-config-server-2.0.0.M8.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/cloud/spring-cloud-config-client/2.0.0.M8/spring-cloud-config-client-2.0.0.M8.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/boot/spring-boot-autoconfigure/2.0.0.RELEASE/spring-boot-autoconfigure-2.0.0.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/cloud/spring-cloud-commons/2.0.0.M8/spring-cloud-commons-2.0.0.M8.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/cloud/spring-cloud-context/2.0.0.M8/spring-cloud-context-2.0.0.M8.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/spring-web/5.0.4.RELEASE/spring-web-5.0.4.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/spring-beans/5.0.4.RELEASE/spring-beans-5.0.4.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/com/fasterxml/jackson/core/jackson-annotations/2.9.0/jackson-annotations-2.9.0.jar"/>
+        <pathelement location="../../../mavenrepo/com/fasterxml/jackson/core/jackson-databind/2.9.3/jackson-databind-2.9.3.jar"/>
+        <pathelement location="../../../mavenrepo/com/fasterxml/jackson/core/jackson-core/2.9.3/jackson-core-2.9.3.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/boot/spring-boot-starter-actuator/2.0.0.RELEASE/spring-boot-starter-actuator-2.0.0.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/boot/spring-boot-actuator-autoconfigure/2.0.0.RELEASE/spring-boot-actuator-autoconfigure-2.0.0.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/boot/spring-boot-actuator/2.0.0.RELEASE/spring-boot-actuator-2.0.0.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/spring-context/5.0.4.RELEASE/spring-context-5.0.4.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.9.3/jackson-datatype-jsr310-2.9.3.jar"/>
+        <pathelement location="../../../mavenrepo/io/micrometer/micrometer-core/1.0.1/micrometer-core-1.0.1.jar"/>
+        <pathelement location="../../../mavenrepo/org/hdrhistogram/HdrHistogram/2.1.10/HdrHistogram-2.1.10.jar"/>
+        <pathelement location="../../../mavenrepo/org/latencyutils/LatencyUtils/2.0.3/LatencyUtils-2.0.3.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/boot/spring-boot-starter-web/2.0.0.RELEASE/spring-boot-starter-web-2.0.0.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/boot/spring-boot-starter-json/2.0.0.RELEASE/spring-boot-starter-json-2.0.0.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.9.3/jackson-datatype-jdk8-2.9.3.jar"/>
+        <pathelement location="../../../mavenrepo/com/fasterxml/jackson/module/jackson-module-parameter-names/2.9.3/jackson-module-parameter-names-2.9.3.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/boot/spring-boot-starter-tomcat/2.0.0.RELEASE/spring-boot-starter-tomcat-2.0.0.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/apache/tomcat/embed/tomcat-embed-core/8.5.28/tomcat-embed-core-8.5.28.jar"/>
+        <pathelement location="../../../mavenrepo/org/apache/tomcat/embed/tomcat-embed-el/8.5.28/tomcat-embed-el-8.5.28.jar"/>
+        <pathelement location="../../../mavenrepo/org/apache/tomcat/embed/tomcat-embed-websocket/8.5.28/tomcat-embed-websocket-8.5.28.jar"/>
+        <pathelement location="../../../mavenrepo/org/hibernate/validator/hibernate-validator/6.0.7.Final/hibernate-validator-6.0.7.Final.jar"/>
+        <pathelement location="../../../mavenrepo/javax/validation/validation-api/2.0.1.Final/validation-api-2.0.1.Final.jar"/>
+        <pathelement location="../../../mavenrepo/org/jboss/logging/jboss-logging/3.3.2.Final/jboss-logging-3.3.2.Final.jar"/>
+        <pathelement location="../../../mavenrepo/com/fasterxml/classmate/1.3.4/classmate-1.3.4.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/spring-webmvc/5.0.4.RELEASE/spring-webmvc-5.0.4.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/spring-aop/5.0.4.RELEASE/spring-aop-5.0.4.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/spring-expression/5.0.4.RELEASE/spring-expression-5.0.4.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/security/spring-security-crypto/5.0.3.RELEASE/spring-security-crypto-5.0.3.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/security/spring-security-rsa/1.0.5.RELEASE/spring-security-rsa-1.0.5.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/bouncycastle/bcpkix-jdk15on/1.56/bcpkix-jdk15on-1.56.jar"/>
+        <pathelement location="../../../mavenrepo/org/bouncycastle/bcprov-jdk15on/1.56/bcprov-jdk15on-1.56.jar"/>
+        <pathelement location="../../../mavenrepo/org/eclipse/jgit/org.eclipse.jgit/4.8.0.201706111038-r/org.eclipse.jgit-4.8.0.201706111038-r.jar"/>
+        <pathelement location="../../../mavenrepo/com/jcraft/jsch/0.1.54/jsch-0.1.54.jar"/>
+        <pathelement location="../../../mavenrepo/com/googlecode/javaewah/JavaEWAH/1.1.6/JavaEWAH-1.1.6.jar"/>
+        <pathelement location="../../../mavenrepo/org/apache/httpcomponents/httpclient/4.5.5/httpclient-4.5.5.jar"/>
+        <pathelement location="../../../mavenrepo/org/apache/httpcomponents/httpcore/4.4.9/httpcore-4.4.9.jar"/>
+        <pathelement location="../../../mavenrepo/commons-codec/commons-codec/1.11/commons-codec-1.11.jar"/>
+        <pathelement location="../../../mavenrepo/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar"/>
+        <pathelement location="../../../mavenrepo/org/yaml/snakeyaml/1.19/snakeyaml-1.19.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/cloud/spring-cloud-starter-bus-amqp/2.0.0.M7/spring-cloud-starter-bus-amqp-2.0.0.M7.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/cloud/spring-cloud-starter-stream-rabbit/2.0.0.RC2/spring-cloud-starter-stream-rabbit-2.0.0.RC2.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/cloud/spring-cloud-stream-binder-rabbit/2.0.0.RC2/spring-cloud-stream-binder-rabbit-2.0.0.RC2.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/cloud/spring-cloud-stream-binder-rabbit-core/2.0.0.RC2/spring-cloud-stream-binder-rabbit-core-2.0.0.RC2.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/boot/spring-boot-starter-amqp/2.0.0.RELEASE/spring-boot-starter-amqp-2.0.0.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/amqp/spring-rabbit/2.0.2.RELEASE/spring-rabbit-2.0.2.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/amqp/spring-amqp/2.0.2.RELEASE/spring-amqp-2.0.2.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/com/rabbitmq/amqp-client/5.1.2/amqp-client-5.1.2.jar"/>
+        <pathelement location="../../../mavenrepo/com/rabbitmq/http-client/1.3.1.RELEASE/http-client-1.3.1.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/integration/spring-integration-amqp/5.0.3.RELEASE/spring-integration-amqp-5.0.3.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/integration/spring-integration-jmx/5.0.3.RELEASE/spring-integration-jmx-5.0.3.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/cloud/spring-cloud-bus/2.0.0.M7/spring-cloud-bus-2.0.0.M7.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/cloud/spring-cloud-starter/2.0.0.M8/spring-cloud-starter-2.0.0.M8.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/cloud/spring-cloud-stream/2.0.0.RC2/spring-cloud-stream-2.0.0.RC2.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/boot/spring-boot-starter-validation/2.0.0.RELEASE/spring-boot-starter-validation-2.0.0.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/spring-messaging/5.0.4.RELEASE/spring-messaging-5.0.4.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/spring-tuple/1.0.0.RELEASE/spring-tuple-1.0.0.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/com/esotericsoftware/kryo-shaded/3.0.3/kryo-shaded-3.0.3.jar"/>
+        <pathelement location="../../../mavenrepo/com/esotericsoftware/minlog/1.3.0/minlog-1.3.0.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/integration/spring-integration-tuple/1.0.0.RELEASE/spring-integration-tuple-1.0.0.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/retry/spring-retry/1.2.2.RELEASE/spring-retry-1.2.2.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/integration/spring-integration-core/5.0.3.RELEASE/spring-integration-core-5.0.3.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/spring-tx/5.0.4.RELEASE/spring-tx-5.0.4.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/io/projectreactor/reactor-core/3.1.5.RELEASE/reactor-core-3.1.5.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/reactivestreams/reactive-streams/1.0.2/reactive-streams-1.0.2.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/boot/spring-boot-starter-test/2.0.0.RELEASE/spring-boot-starter-test-2.0.0.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/boot/spring-boot-starter/2.0.0.RELEASE/spring-boot-starter-2.0.0.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/boot/spring-boot/2.0.0.RELEASE/spring-boot-2.0.0.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/boot/spring-boot-starter-logging/2.0.0.RELEASE/spring-boot-starter-logging-2.0.0.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar"/>
+        <pathelement location="../../../mavenrepo/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar"/>
+        <pathelement location="../../../mavenrepo/org/apache/logging/log4j/log4j-to-slf4j/2.10.0/log4j-to-slf4j-2.10.0.jar"/>
+        <pathelement location="../../../mavenrepo/org/apache/logging/log4j/log4j-api/2.10.0/log4j-api-2.10.0.jar"/>
+        <pathelement location="../../../mavenrepo/org/slf4j/jul-to-slf4j/1.7.25/jul-to-slf4j-1.7.25.jar"/>
+        <pathelement location="../../../mavenrepo/javax/annotation/javax.annotation-api/1.3.2/javax.annotation-api-1.3.2.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/boot/spring-boot-test/2.0.0.RELEASE/spring-boot-test-2.0.0.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/boot/spring-boot-test-autoconfigure/2.0.0.RELEASE/spring-boot-test-autoconfigure-2.0.0.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/com/jayway/jsonpath/json-path/2.4.0/json-path-2.4.0.jar"/>
+        <pathelement location="../../../mavenrepo/net/minidev/json-smart/2.3/json-smart-2.3.jar"/>
+        <pathelement location="../../../mavenrepo/net/minidev/accessors-smart/1.2/accessors-smart-1.2.jar"/>
+        <pathelement location="../../../mavenrepo/org/ow2/asm/asm/5.0.4/asm-5.0.4.jar"/>
+        <pathelement location="../../../mavenrepo/junit/junit/4.12/junit-4.12.jar"/>
+        <pathelement location="../../../mavenrepo/org/assertj/assertj-core/3.9.1/assertj-core-3.9.1.jar"/>
+        <pathelement location="../../../mavenrepo/org/mockito/mockito-core/2.15.0/mockito-core-2.15.0.jar"/>
+        <pathelement location="../../../mavenrepo/net/bytebuddy/byte-buddy/1.7.10/byte-buddy-1.7.10.jar"/>
+        <pathelement location="../../../mavenrepo/net/bytebuddy/byte-buddy-agent/1.7.10/byte-buddy-agent-1.7.10.jar"/>
+        <pathelement location="../../../mavenrepo/org/objenesis/objenesis/2.6/objenesis-2.6.jar"/>
+        <pathelement location="../../../mavenrepo/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
+        <pathelement location="../../../mavenrepo/org/hamcrest/hamcrest-library/1.3/hamcrest-library-1.3.jar"/>
+        <pathelement location="../../../mavenrepo/org/skyscreamer/jsonassert/1.5.0/jsonassert-1.5.0.jar"/>
+        <pathelement location="../../../mavenrepo/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/spring-core/5.0.4.RELEASE/spring-core-5.0.4.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/spring-jcl/5.0.4.RELEASE/spring-jcl-5.0.4.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/springframework/spring-test/5.0.4.RELEASE/spring-test-5.0.4.RELEASE.jar"/>
+        <pathelement location="../../../mavenrepo/org/xmlunit/xmlunit-core/2.5.1/xmlunit-core-2.5.1.jar"/>
+    </path>
+    <path id="eng-config.classpath">
+        <pathelement location="target/classes"/>
+        <pathelement location="target/test-classes"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.SpringCloudConfigServerApplication.classpath">
+        <path refid="eng-config.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.0 ENG CONFIGURATION =================.classpath">
+        <path refid="eng-config.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <target name="init">
+        <mkdir dir="target/classes"/>
+        <mkdir dir="target/test-classes"/>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="src/main/java">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="src/main/resources">
+                <exclude name="**/*.java"/>
+                <exclude name="**"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/test-classes">
+            <fileset dir="src/test/java">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/test-classes">
+            <fileset dir="src/test/resources">
+                <exclude name="**/*.java"/>
+                <exclude name="**"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="target/generated-sources/annotations">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/test-classes">
+            <fileset dir="target/generated-test-sources/test-annotations">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="target/classes"/>
+        <delete dir="target/test-classes"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/main/java"/>
+            <src path="src/main/resources"/>
+            <src path="target/generated-sources/annotations"/>
+            <exclude name="**"/>
+            <classpath refid="eng-config.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/test-classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/test/java"/>
+            <src path="src/test/resources"/>
+            <src path="target/generated-test-sources/test-annotations"/>
+            <exclude name="**"/>
+            <classpath refid="eng-config.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="SpringCloudConfigServerApplication">
+        <java classname="it.eng.ms.config.SpringCloudConfigServerApplication" failonerror="true" fork="yes">
+            <classpath refid="run.SpringCloudConfigServerApplication.classpath"/>
+        </java>
+    </target>
+    <target name="0 ENG CONFIGURATION =================">
+        <java classname="it.eng.ms.config.SpringCloudConfigServerApplication" failonerror="true" fork="yes">
+            <classpath refid="run.0 ENG CONFIGURATION =================.classpath"/>
+        </java>
+    </target>
+</project>
