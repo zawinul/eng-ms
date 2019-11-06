@@ -36,6 +36,9 @@
 			"altro",
 			"altro_ancora"
 		],
+		"workflow":[
+			"camunda_id"
+		],
 		"servizio1": [],
 		"servizio2": [],
 		"servizio3": [],

@@ -1,0 +1,66 @@
+HOME
+{
+  "obj": {
+    "id_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ink5dGhmUElrT0RDZFlnTnpSMHlkeHMzZ3VhTFpPeTNELTdHT0NDVFVsTkEifQ.eyJzdWIiOiIyMzEyMWQzYy04NGRmLTQ0YWMtYjQ1OC0zZDYzYTlhMDU0OTciLCJub25jZSI6Ik1DNDVOVGswTXpZek5URTNNVEkyTlRBekt6RTFOREF5T0RReE56RTBNRGc9Iiwic2lkIjoiYzBkZTAyZDAtZGYxOC00ZWY2LTgyYmEtNGJhY2NmODRkOGJmIiwiYXRfaGFzaCI6IkpBODJ5QUlpM1dkR25GVFZOYWR4eGciLCJzX2hhc2giOiJvTkdxZ1ZoUlJrdjk2ODlaV2xyRWpRIiwiYXVkIjoicjMiLCJleHAiOjE1NDAyODc3NzEsImlhdCI6MTU0MDI4NDE3MSwiaXNzIjoiaHR0cHM6Ly9vaWRjLXByb3ZpZGVyOjMwNDMifQ.D6n_D-OaP1HuJn5H-4A1TCWSxUNvaI9F_9SZoWFwcgQ6s7iw8_33z6Ff-oMMiLKezBtLhBP55dY1hjUb2xFHaVsorSRxDJZsMKkGjjmMiOxlzU7gcid0nM4FcMuYwDejD2gb0pmC7mL_wDUgcER17wbeFanzU2WYhHDSsTINXxJ7qKfDe7AUCdobBpetwbWs6agme7UwWmlON7oTLIyNJZ_kNWSb3qFt8yh5LOcVMEi0JB-UtKcnrUYgjSaTX1OrQqge-rVX8OrTsxrFBtFQIbnInC3f_ywRKdf-Oofdi1QQSKbt4QNiUrk01MtTHw8kWlhQ3ZQTQg8cHQiHV3w-mw",
+    "access_token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ink5dGhmUElrT0RDZFlnTnpSMHlkeHMzZ3VhTFpPeTNELTdHT0NDVFVsTkEifQ.eyJqdGkiOiJheWphYWtwWXc2Tn5abXJMTjdZWEciLCJzdWIiOiIyMzEyMWQzYy04NGRmLTQ0YWMtYjQ1OC0zZDYzYTlhMDU0OTciLCJpc3MiOiJodHRwczovL29pZGMtcHJvdmlkZXI6MzA0MyIsImlhdCI6MTU0MDI4NDE3MSwiZXhwIjoxNTQwMjg3NzcxLCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGRhdGlfYXBwbGljYXRpdmkgYWx0cm8gc2Vydml6aW8xIHNlcnZpemlvNSIsImF1ZCI6InIzIn0.n-dWGyHVUvNykYxNEAyJmXGhuCvNjolVysfd9fntI_-19LFvb7CtabpvAW_m6VifvWRj-dWezkuo0qgwuBnbalX2RcKAzbjVMDVozDNtnRLaCoRFcj9bTUwn7KQxKsTm78cTN5z8mPeN7vzyrE4rvWI3cM9ZUIaR7X-OpexKnL3rznmNHz2mDkRxwHc0mzy7zLRV5e65J4ZfS4B6iAdWhElbKk7uuVA5s3rkqYhf61lMK33wnJgE7VlDGm_vloPOLXCXaM_Mh9z8pOoQKcCZaKtOwy4dRKXWA4EekLD3DMe789DDjMA5ZVaKHu957beApMjkSwaigIfAJ1Yay6xjbQ",
+    "expires_in": "3600",
+    "token_type": "Bearer",
+    "state": "eyJtYXJrIjoiWFhYLTE1NDAyODQxNzEzODctMC4yMzIzNjIxMzUzNTQ4NjE1Iiwibm9uY2UiOiJNQzQ1TlRrME16WXpOVEUzTVRJMk5UQXpLekUxTkRBeU9EUXhOekUwTURnPSIsImNsaWVudCI6InIzIiwicGFyYW1zIjp7InJlc3RhcnRGcm9tIjoiaHR0cHM6Ly8xMjcuMC4wLjE6ODc4Ny9ob21lLmh0bWwifX0",
+    "session_state": "e46fa9ed3159423f58da6f5c890808353114417ffc2be7c36fc079f6519302ab.e8c38615fed739ef"
+  },
+  "state": {
+    "mark": "XXX-1540284171387-0.2323621353548615",
+    "nonce": "MC45NTk0MzYzNTE3MTI2NTAzKzE1NDAyODQxNzE0MDg=",
+    "client": "r3",
+    "params": {
+      "restartFrom": "https://127.0.0.1:8787/home.html"
+    }
+  },
+  "id": {
+    "sub": "23121d3c-84df-44ac-b458-3d63a9a05497",
+    "nonce": "MC45NTk0MzYzNTE3MTI2NTAzKzE1NDAyODQxNzE0MDg=",
+    "sid": "c0de02d0-df18-4ef6-82ba-4baccf84d8bf",
+    "at_hash": "JA82yAIi3WdGnFTVNadxxg",
+    "s_hash": "oNGqgVhRRkv9689ZWlrEjQ",
+    "aud": "r3",
+    "exp": 1540287771,
+    "iat": 1540284171,
+    "iss": "https://oidc-provider:3043"
+  },
+  "access": {
+    "jti": "ayjaakpYw6N~ZmrLN7YXG",
+    "sub": "23121d3c-84df-44ac-b458-3d63a9a05497",
+    "iss": "https://oidc-provider:3043",
+    "iat": 1540284171,
+    "exp": 1540287771,
+    "scope": "openid profile dati_applicativi altro servizio1 servizio5",
+    "aud": "r3"
+  },
+  "user": {
+    "sub": "23121d3c-84df-44ac-b458-3d63a9a05497",
+    "organigramma": [
+      {
+        "societa": "pippo",
+        "dipartimento": "pluto",
+        "ruolo": "direttore"
+      },
+      {
+        "societa": "pluto",
+        "dipartimento": "paperino",
+        "ruolo": "consultatore"
+      }
+    ],
+    "abilitazioni": [
+      {
+        "sistema": "protocollo",
+        "ambito": "affari legali",
+        "profilo": "inserimento dati"
+      }
+    ],
+    "altro": "aaa",
+    "altro_ancora": {
+      "p": 123,
+      "q": "2018-10-23T08:42:51.878Z"
+    }
+  }
+}

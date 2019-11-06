@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="jquery-3.2.1.js"></script>
+	<script src="../oidc/client-utils.js"></script>
+	<script>
+	$(function(){
+		var p = oidc.getCredentials(true); 
+		p.then(function(oidc) {
+			$('.oidc-dump').text(JSON.stringify(oidc,null,2));
+		});
+	});
+	</script>
+	<title>Home</title>
+</head>
+<body>
+	<h1>HOME</h1>
+	<pre class="oidc-dump" style="font-size: 11px; border:1px solid #e0e0e0"></pre>
+	
+</body>
+</html>

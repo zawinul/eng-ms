@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="../../libs/jquery-3.2.1.js"></script>
+	<script src="../../libs/camunda.js"></script>
+	<script src="../../oidc/client-utils.js"></script>
+	<script src="conferma.js"></script>
+	<title>R3 richiesta conferma</title>
+
+	<style>
+	.isDisabled {
+		color: currentColor;
+		cursor: not-allowed;
+		opacity: 0.5;
+		text-decoration: none;
+	}
+	</style>
+</head>
+<body>
+	<h1>R3: richiesta verifica</h1>
+	<div class="process-info"></div>
+	<div class="deployment-info"></div>
+	<br>
+	<div class="params-ok" style="display:none">
+		<div class="label">mittente</div>
+		<div class="valore"><input class="mittente" type="text"></div>
+		
+		<div class="label">destinatario</div>
+		<div class="valore"><input class="destinatario" type="text"></div>
+		
+		<div class="label">oggetto</div>
+		<div class="valore"><input class="oggetto" type="text"></div>
+		
+		<div class="label">testo</div>
+		<div class="valore"><textarea class="testo"></textarea></div>
+	
+		<div class="button"><a href="#" class="accetta">accetta</a></div>
+		<div class="button"><a href="#" class="rifiuta">rifiuta</a></div>
+		<div class="button"><a href="#" class="modifica isDisabled">richiedi modifica</a></div>
+	</div>
+	<div class="params-ko" style="display:none">
+		<h3 class="error-message"></h3>
+	</div>
+
+	<pre class="dump" style="font-size: 11px; clear:left"></pre>
+	
+</body>
+</html>

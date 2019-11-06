@@ -22,7 +22,8 @@ const USERSdata = [
 			],
 			abilitazioni: [
 				{ sistema:'protocollo', ambito:'affari legali', profilo:'inserimento dati'}
-			]
+			],
+			camunda_id:'demo'
 		},
 	},
 	{
@@ -39,7 +40,8 @@ const USERSdata = [
 			],
 			abilitazioni: [
 				{ sistema:'protocollo', ambito:'affari legali', profilo:'inserimento dati' }
-			]
+			],
+			camunda_id:'demo'
 		}
 	}
 ];

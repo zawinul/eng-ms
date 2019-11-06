@@ -28,26 +28,31 @@ function initExpress() {
 	https.createServer(sslOptions, app).listen(4143);
 
 	// validazione 
-	app.use(function(req, res, next) {
-		validazioneRichiesta(req, 'servizio1')
-			.then(()=>{
-				console.log('validazione ok');
-				next();
-			})  
-			.catch(error=>{
-				res.status(400).send(error);
-			});
+	app.use(async function(req, res, next) {
+		try {
+			await validazioneRichiesta(req, 'servizio1');
+			console.log('validazione ok');
+			next();
+		}
+		catch(error) {
+			console.log('errore: '+error.message);
+			res.status(400).send(error.message);
+		}
 	});
 
 }
 
-var cnt = 1;
 function routings() {
 
+	app.get('/pippo', function(req, res) {
+		res.status(200).send('ciao pippo');
+	});
 
 	app.get('/me', function(req, res) {
-		console.log('get /pippo '+cnt);
-		res.status(200).send(JSON.stringify(req.userInfo,null,2));
+		console.log('get /me');
+		res.status(200).send(
+			JSON.stringify(req.userInfo,null,2)
+		);
 	});
 
 }

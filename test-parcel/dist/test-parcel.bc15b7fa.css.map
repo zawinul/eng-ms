@@ -1,0 +1,1 @@
+{"version":3,"sources":["main.css"],"names":[],"mappings":"AAAA,MAEC,qDAA0C,CAC1C,SACC","file":"test-parcel.bc15b7fa.css","sourceRoot":"..","sourcesContent":[".main {\n\t/* File immagine */\n\tbackground: url('./images/background.png');\n\tcolor: red;\n  }"]}

@@ -9,23 +9,23 @@ const nodeoutlook = require('nodejs-nodemailer-outlook');
 const PORT = 3900;
 
 
-function send(subject, content, to, cc) {
+function sendPromise(subject, content, to, cc) {
 	return new Promise(function(resolve, reject) {
 		function realSend() {
-			var x = {
-				auth: {
-					user: "paolo.andrenacci@eng.it",
-					pass: "Spazio2000"
-				}, 
-				from: 'paolo.andrenacci@eng.it'
-			};
-			Object.assign(x, {subject, to, cc});
-			if (content.trim().indexOf('<')==0)
-				x.html = content;
-			else
-				x.text = content;
-			console.log(JSON.stringify(x));
 			try {
+				var x = {
+					auth: {
+						user: "paolo.andrenacci@eng.it",
+						pass: "Spazio2000"
+					}, 
+					from: 'paolo.andrenacci@eng.it'
+				};
+				Object.assign(x, {subject, to, cc});
+				if (content.trim().indexOf('<')==0)
+					x.html = content;
+				else
+					x.text = content;
+				console.log(JSON.stringify(x));
 				nodeoutlook.sendEmail(x);
 				resolve('OK');
 			}
@@ -98,7 +98,8 @@ function routings() {
 	app.post('/sync', function (req, res) {
 		var { subject, content, to, cc} = req.body;
 		try {
-			send(subject, content, to, cc).then(()=>{
+			sendPromise(subject, content, to, cc)
+			.then(()=>{
 				res.status(200).send('OK');
 			});
 		}
@@ -108,12 +109,13 @@ function routings() {
 	});	
 
 	app.post('/async', function (req, res) {
-		throw "not implemented"
+		throw "not implemented";
 	});
-
 }
 
-
+if (process.argv.indexOf('-prova')>=0)
+	prova();
 initExpress();
 routings();
+
 console.log('service started on http://eng-sendmail:'+PORT);

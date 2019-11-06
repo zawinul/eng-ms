@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="../../libs/jquery-3.2.1.js"></script>
+	<script src="../../libs/camunda.js"></script>
+	<script src="../../oidc/client-utils.js"></script>
+	<script src="richiedi.js"></script>
+	<style>
+		.label {
+		float:left;
+		width: 120px;
+		clear:left;
+	}
+
+	.valore {
+		float:left;
+		clear:right;
+	}
+	</style>
+	<title>Richiedi r3</title>
+</head>
+
+<body>
+	<h1>Richiedi R3</h1>
+	<div class="ok" style="display: none">
+		<div class="label">Mittente</div>
+		<div class="valore">
+			<input class="mittente" type="text">
+		</div>
+
+		<div class="label">Destinatario</div>
+		<div class="valore">
+			<input class="destinatario" type="text">
+		</div>
+
+		<div class="label">Oggetto</div>
+		<div class="valore">
+			<input class="oggetto" type="text">
+		</div>
+
+		<div class="label">Testo</div>
+		<div class="valore">
+			<textarea class="testo" style="width:800px; height:150px"></textarea>
+		</div>
+		<div class="label">&nbsp;</div>
+		<div class="valore">
+			<button class="procedi">procedi</button>
+		</div>
+	</div>
+	<pre class="dump" style="font-size: 11px"></pre>
+
+</body>
+
+</html>

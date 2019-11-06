@@ -1,0 +1,15 @@
+<script>
+	function run() {
+		// Call the function that was exposed in Node.
+		env().then(function(data) {
+			for (const k in data) {
+				const div = document.createElement('div');
+				div.textContent = `ccc ${k} => ${data[k]}`;
+				document.body.appendChild(div);
+			}
+		});
+	}
+</script>
+<body onload="run()">
+	<h1>ciaoccari</h1>
+</body>

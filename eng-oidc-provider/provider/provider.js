@@ -51,7 +51,8 @@ function getConfiguration() {
 	var extra = {
 		findById: Account.findById,
 		logoutSource: logoutSource,
-		postLogoutRedirectUri: postLogoutRedirectUri
+		postLogoutRedirectUri: postLogoutRedirectUri,
+		interactionCheck: async function(ctx) { return false; }
 	};
 	Object.assign(conf, extra);
 	return conf;

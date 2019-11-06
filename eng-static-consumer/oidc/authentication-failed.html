@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>authentication failed</title>
+</head>
+<body>
+	<h3>authentication failed</h3>
+	<a href="#" id="restart">restart</a>
+	<script>
+		var p = location.href.split('?')[1].split('&');
+		p.map(function(v) {
+			v = v.split('=');
+			if (v[0]='restart')
+				document.getElementById('restart').href = atob(unescape(v[1]));
+		})
+	</script>
+</body>
+</html>
