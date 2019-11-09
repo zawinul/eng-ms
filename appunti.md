@@ -66,4 +66,15 @@ https://eng-static:91/r3/richiedi/
 https://www.osboxes.org/fedora/  
 Fedora 31  
 C:\Users\a135631\VirtualBox VMs\F31-VB-64bit.7z  
- 
+
+sudo useradd -m paolo -p paolo
+sudo groupadd developers
+
+sudo usermod -a -G developers paolo
+sudo usermod -aG wheel paolo
+
+
+
+VARIE
+---
+provato vaadin per gestire client side failover & load balancing, non mi piace, approccio integrato server-client alle UI, stile gwt  

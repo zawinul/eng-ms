@@ -12,8 +12,16 @@
 			params[unescape(x[0])] = unescape(x[1]);
 		})
 
-		if (params.q)
-			alert(atob(params.q));
+		if (params.q) {
+			var paramObj=null;
+			try { paramObj = JSON.parse(atob(params.q));}catch(e){};
+			if (paramObj && paramObj.cb) {
+				setTimeout(function(){
+					location.href = paramObj.cb;
+				}, 3000);
+			}
+		}
+
 	</script>
 </head>
 <body>

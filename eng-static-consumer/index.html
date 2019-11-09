@@ -4,21 +4,62 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<script src="jquery-3.2.1.js"></script>
-	<script src="../oidc/client-utils.js"></script>
+	<script src="libs/jquery-3.2.1.js"></script>
+
+	<!--https://raw.githubusercontent.com/resilient-http/resilient.js/master/resilient.js-->
+	<script src="libs/resilient.js"></script>
+	
+	<script src="oidc/client-utils.js"></script>
 	<script>
 	$(function(){
-		var p = oidc.getCredentials(true); 
-		p.then(function(oidc) {
-			$('.oidc-dump').text(JSON.stringify(oidc,null,2));
-		});
+		$('#do-login1').click(function() {doLogin(false);});
+		$('#do-login2').click(function() {doLogin(true);});
+		$('#do-servizio1').click(doServizio1);
+		$('#do-logout').click(doLogout);
 	});
+
+	var servizio1;
+
+	function doLogin(samePage) {
+		var p = oidc.getCredentials(samePage); 
+		p.then(function(oidc) {
+			$('#oidc-dump').text(JSON.stringify(oidc,null,2));
+		});
+	}
+
+	
+	function doLogout() {
+		oidc.logout();
+	}
+
+	function doServizio1() {
+		servizio1 = servizio1 || restService([
+			'https://oidc-servizio1:7100',
+			'https://oidc-servizio1:7101',
+			'https://oidc-servizio1:7102']
+		);
+
+		servizio1.get('pippo').then(function(result){
+			//debugger;
+			var line = `[${result.status}] ${result.data}\n`;
+			$('#servizio1-dump').text($('#servizio1-dump').text()+line);
+		});
+	}
+
 	</script>
-	<title>Home</title>
+	<title>Eng-static Home</title>
+	<style>
+	pre { 	font-size: 11px; border:1px solid #e0e0e0; height:100px; overflow: auto;}
+	</style>
 </head>
 <body>
 	<h1>HOME</h1>
-	<pre class="oidc-dump" style="font-size: 11px; border:1px solid #e0e0e0"></pre>
+	<a href="#" id="do-login1">do login</a><br>
+	<a href="#" id="do-login2">do login (same page)</a><br>
+	<a href="#" id="do-servizio1">call servizio1</a><br>
+	<a href="#" id="do-logout">do logout</a><br>
+	<pre id="oidc-dump"></pre>
+	<pre id="servizio1-dump"></pre>
 	
 </body>
 </html>
