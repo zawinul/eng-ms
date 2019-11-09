@@ -15,7 +15,6 @@
 		"revocation": true,
 		"sessionManagement": true
 	},
-	"findById": "Account.findById",
 	"claims": {
 		"openid": [
 			"sub"

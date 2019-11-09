@@ -36,14 +36,9 @@ ENG-OID-PROVIDER
 ---
 
 dipende da mongo  
-
-C:\Workspace\eng-ms\eng-oidc-provider\provider-start.bat  
-http://127.0.0.1:3000/....  
-la logica per trovare gli utenti è in in account.js
-*paolo/aaa*  
-*pippo/bbb*  
-I "client" sono configurati in clients.json
-
+start: C:\Workspace\eng-ms\eng-oidc-provider\provider-start.bat  
+url: http://127.0.0.1:3000/....  
+[doc here](./oidc-provider.md)
 
 
 
