@@ -1,7 +1,7 @@
 
 Rete
 ---
-
+* file host  
 127.0.0.1	oidc-provider  
 127.0.0.1	oidc-consumer  
 127.0.0.1	oidc-servizio1  
@@ -9,6 +9,8 @@ Rete
 127.0.0.1	eng-static  
 127.0.0.1	eng-workflow  
 127.0.0.1	eng-queue  
+* link  
+
 
 Camunda: (dipende da mysql)
 ---
