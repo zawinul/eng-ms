@@ -1,25 +1,28 @@
 
+Rete
+---
+
+127.0.0.1	oidc-provider  
+127.0.0.1	oidc-consumer  
+127.0.0.1	oidc-servizio1  
+127.0.0.1	eng-sendmail  
+127.0.0.1	eng-static  
+127.0.0.1	eng-workflow  
+127.0.0.1	eng-queue  
+
 Camunda: (dipende da mysql)
--
+---
 
-progetto: C:\workspace\Camunda\eng-camunda-authfilter
-start: C:\Workspace\Camunda\runnable\start.bat
-url: https://127.0.0.1:8080
-admin: demo/demo
-
-camunda usa jose4j per la gestione dei token
-
-
-camunda db:
-db: jdbc:mysql://localhost:3306/camunda
-db.username: camunda2
-db.password: camunda
+progetto: C:\workspace\Camunda\eng-camunda-authfilter  
+start: C:\Workspace\Camunda\runnable\start.bat  
+url: https://127.0.0.1:8080  
+admin: demo/demo  
+[more...](./camunda.md)
 
 MONGO
 -----
-(C:\Workspace\eng-ms\eng-oidc-provider\mongo-start.bat)
-c:\mongo\bin\mongod --dbpath c:\temp\aa-mongo-ms2
-
+start: C:\Workspace\eng-ms\eng-oidc-provider\mongo-start.bat  
+[more...](./mongodb.md)
 
 CONFIG
 ------
@@ -38,7 +41,7 @@ ENG-OID-PROVIDER
 dipende da mongo  
 start: C:\Workspace\eng-ms\eng-oidc-provider\provider-start.bat  
 url: http://127.0.0.1:3000/....  
-[doc here](./oidc-provider.md)
+[more...](./oidc-provider.md)
 
 
 
