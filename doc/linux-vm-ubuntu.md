@@ -1,7 +1,24 @@
 LINUX VM
 ---
-https://www.osboxes.org/fedora/  
-Fedora 31  
+https://www.osboxes.org/ubuntu/  
+Ubuntu 18.04
+
+* update
+		sudo apt-get update
+
+* creato utente paolo
+
+	sudo useradd -m paolo -p paolo
+	sudo groupadd developers
+
+	sudo usermod -a -G developers paolo
+	sudo usermod -aG sudo paolo
+	#sudo usermod -aG docker paolo
+
+	sudo chsh -s /bin/bash paolo
+
+OLD
+===
 C:\Users\a135631\VirtualBox VMs\F31-VB-64bit.7z  
 
 aggiunto utente paolo e gruppo developers, aggiunto paolo ai sudoers
@@ -10,7 +27,8 @@ aggiunto utente paolo e gruppo developers, aggiunto paolo ai sudoers
 	sudo groupadd developers
 
 	sudo usermod -a -G developers paolo
-	sudo usermod -aG wheel paolo
+	sudo usermod -aG sudo paolo
+	sudo usermod -aG docker paolo
 
 modificato .bashrc
 
