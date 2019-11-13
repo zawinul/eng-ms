@@ -19,6 +19,10 @@ più di 10 giga di HD
 	#sudo usermod -aG docker paolo
 
 	sudo chsh -s /bin/bash paolo
+	
+	sudo git config --global user.name "Nome Cognome"
+	sudo git config --global user.email "indirizzo@mail.com"
+
 
 installato docker come da https://docs.docker.com/install/linux/docker-ce/debian/
 
