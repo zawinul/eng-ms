@@ -96,7 +96,7 @@ function initOidc() {
 	})
 	.then(() => {
 		app.use('/', oidc.callback);
-		log('oidc-provider listening on port 3000,\ncheck https://oidc-provider:3043/.well-known/openid-configuration');
+		log('oidc-provider listening on port 3043,\ncheck https://oidc-provider:3043/.well-known/openid-configuration');
 	})
 	.catch((err) => {
 		log(err);
