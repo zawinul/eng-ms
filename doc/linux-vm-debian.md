@@ -31,9 +31,9 @@ installare maven
 
 OLD
 ===
-C:\Users\a135631\VirtualBox VMs\F31-VB-64bit.7z  
+* C:\Users\a135631\VirtualBox VMs\F31-VB-64bit.7z  
 
-aggiunto utente paolo e gruppo developers, aggiunto paolo ai sudoers
+* aggiunto utente paolo e gruppo developers, aggiunto paolo ai sudoers
 
 	sudo useradd -m paolo -p paolo
 	sudo groupadd developers
@@ -43,19 +43,21 @@ aggiunto utente paolo e gruppo developers, aggiunto paolo ai sudoers
 	sudo usermod -aG sudo paolo
 	sudo usermod -aG docker paolo
 
-modificato .bashrc
+* modificato .bashrc
 
 	export ENGMSDIR=/var/eng-ms
 	export PATH=$PATH:$ENGMSDIR/script/linux
 	export MYGITUSER=******
 	export MYGITPASSWORD=******
 
-clonato repository git
+* clonato repository git
 
 	cd /var
 	git clone https://github.com/zawinul/eng-ms
 
-cambiato gruppo a tutto il contenuto
+* cambiato gruppo a tutto il contenuto
 	
 	chgrp -R developers eng-ms
+
+* installato vs code come da istruzioni su sito web
 
