@@ -1,5 +1,5 @@
 
-const engMsService = require('../eng-ms-js-service/engMsService.js');
+const engMsService = require('eng-ms-js-service');
 
 async function main() {
 	var cfg = {

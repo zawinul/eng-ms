@@ -1,0 +1,1 @@
+docker start myprovider || docker run -i -t --name myprovider --net mybridge -p3043:3043  eng-oidc-provider
