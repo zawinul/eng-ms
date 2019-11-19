@@ -26,6 +26,7 @@ più di 10 giga di HD
 
 installato docker come da https://docs.docker.com/install/linux/docker-ce/debian/
 
+
 installare maven
 
 

@@ -1,0 +1,19 @@
+.vendite-breadcrumb {
+  position: relative;
+  top: 5px;
+  left: 0;
+  height: 21px;
+  width: 100%;
+  padding-left: 15px;
+}
+.vendite-breadcrumb .elemento {
+  float: left;
+  margin-right: 6px;
+}
+.vendite-breadcrumb .separatore {
+  float: left;
+  margin-right: 6px;
+}
+body.is-main .vendite-breadcrumb {
+  display: none;
+}

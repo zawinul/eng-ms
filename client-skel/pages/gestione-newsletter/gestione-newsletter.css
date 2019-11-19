@@ -1,0 +1,25 @@
+div.gestione-newsletter {
+	position: relative;
+	width:100%;
+	overflow: hidden;
+	height: 200px;
+}
+
+div.gestione-newsletter>div {
+	position: absolute;
+	left: 50%;
+	height: 200px;
+	margin-left: -191px;
+	padding-top: 20px;
+}
+
+div.gestione-newsletter div.gestione-ok {
+	width: 100%;
+	text-align: center;
+	margin: 13px 0;
+	height: 49px;
+}
+
+div.gestione-newsletter div.gestione-ok button {
+	width: 80px;
+}

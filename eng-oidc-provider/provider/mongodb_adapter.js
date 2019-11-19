@@ -2,7 +2,7 @@ const { MongoClient } = require('mongodb'); // eslint-disable-line import/no-unr
 const { snakeCase } = require('lodash');
 //const mongoURI = 'mongodb://127.0.0.1:27017/?';
 //const mongoURI = '127.0.0.1:27017/?';
-const mongoURI = 'mongodb://localhost:27017/eng-ms';
+const mongoURI = 'mongodb://eng-mongo:27017/eng-ms';
 let DB;
 
 const VERBOSE = false;

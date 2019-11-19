@@ -1,0 +1,41 @@
+.engapp-footer {
+  width: 100%;
+  height: 109px;
+  position: relative;
+}
+.engapp-footer .b0 {
+  background-image: url("../../img/footer-left.png");
+  background-repeat: repeat-x;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.engapp-footer .b1 {
+  background-image: url("../../img/footer-right.png");
+  width: 671px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.engapp-footer .links {
+  position: absolute;
+  right: 30px;
+  top: 10px;
+  font-size: 0.75em;
+  color: black;
+}
+.engapp-footer .links div {
+  float: left;
+  margin: 0 4px;
+}
+.engapp-footer .links div a {
+  color: black;
+  text-decoration: none;
+}
+.engapp-footer .links div a:hover {
+  text-decoration: underline;
+  color: #343a40;
+}

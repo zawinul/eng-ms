@@ -1,0 +1,32 @@
+.wait-container {
+  position: relative;
+}
+.wait-container,
+.wait-container .wait-inner2,
+.wait-container .wait-outer2 {
+  min-height: 20px;
+  min-width: 20px;
+}
+.wait-container .wait-outer2 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0%;
+  overflow: hidden;
+  z-index: 9998;
+  background: linear-gradient(rgba(1, 105, 103, 0.1), rgba(255, 255, 255, 0));
+}
+.wait-container .wait-inner2 {
+  background-image: url("../img/350.gif");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-size: contain;
+  opacity: .25;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  z-index: 9999;
+}

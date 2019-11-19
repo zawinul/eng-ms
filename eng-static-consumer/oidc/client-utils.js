@@ -67,7 +67,7 @@ var oidc = (function () {
 
 	function getCredentials(samePage) {
 		var ret = $.Deferred();
-		/*if (localStorage.engSingleSignOnData) {
+		if (localStorage.engSingleSignOnData) {
 			var x = JSON.parse(localStorage.engSingleSignOnData);
 			var exp = new Date(x.exp * 1000);
 			var now = new Date();
@@ -75,7 +75,8 @@ var oidc = (function () {
 				ret.resolve(x);
 				return ret;
 			}
-		}*/
+		}
+		
 		//debugger;
 		const mark = Math.floor(Math.random() * 1000000000);
 		const nonce = Math.floor(Math.random() * 1000000000);

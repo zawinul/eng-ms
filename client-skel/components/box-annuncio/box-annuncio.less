@@ -1,0 +1,281 @@
+
+@import (reference) "../../css/main";
+
+@box-w:100%;
+@box-h:200px;
+@primariga-h:24px;
+@contenuto-h: @box-h - @primariga-h - 2px;
+//@tab-h: 50px;
+@tab-h: 25px;
+@left-side-w: 35%;
+@right-side-w: 65%;
+
+
+.box-annuncio {
+	//.fade-top-down;
+
+	.fade-down-top;
+
+	height: @box-h;
+	font-size:1em;
+	//background: linear-gradient(rgba(200,200,230,.5),rgba(255,255,255,0));
+	//border: 1px solid  #c0c0c0;
+	margin-bottom: 20px;
+	position: relative;
+
+
+	.prima-riga {
+		width:100%;
+		height:@primariga-h;
+		//border-bottom: 1px solid #c0c0c0;
+		font-weight: bold; 
+		padding-bottom: 0px;
+		overflow: hidden;
+		font-size:1.25em;
+
+		.lente {
+			.fg-verde;
+			.bg-bianco;
+			float: right;
+			margin-left: 20px;
+			height: 100%;
+			padding-top: 2px;
+			padding-left: 4px;
+			padding-right: 4px;
+
+			&:hover {
+				.bg-verde;
+				.fg-bianco;
+			}
+		}
+ 
+		.comune {
+			float:left;
+			margin-left:10px;
+			font-weight: bold;
+		}
+
+		.provincia {
+			float:right;
+			margin-right:10px;
+			font-weight: normal;
+		}
+	}
+
+	
+	.foto {
+		float:left; 
+		width:@left-side-w - 1px; 
+		height:@contenuto-h;
+		text-align: center;
+		vertical-align: top;
+		position: relative;
+		//background-color: rgba(192,192,192,.5);
+
+		.fotobox {
+			width:100%;
+			height:100%;
+			overflow: hidden;
+			img {
+			}
+		}
+
+		.bottone {
+			background-color: rgba(255,255,255,.2);
+			position: absolute;
+			display:table;
+			vertical-align: middle;
+			height: 100%;
+			width:33%;
+			top:0;
+			color: white;
+			z-index:10;
+			font-size: 40px;
+			opacity:.2;
+
+
+			&>div {
+				display:table-cell;
+				vertical-align: middle
+			}
+			&.sinistro {
+				left:0;
+			}
+			&.destro{
+				right:0;
+			}	
+
+			&:hover {
+				opacity:1;
+			}
+		}
+
+		.xs-portrait & {
+			height:@contenuto-h - @tab-h;
+		}
+	}
+
+	.desc {
+		float:right;
+		width:@right-side-w; 
+		height:@contenuto-h - @tab-h;
+		.xs-portrait & {
+			margin-right:0px;
+			height:120px;
+		}
+		.testo {
+			padding:12px;
+			width: 100%;
+			height: @contenuto-h - @tab-h - 5px;
+			overflow:auto; 
+		}
+	}
+
+	.tab {
+		float:right;
+		margin-right:0px;
+		width:@right-side-w; 
+		height:@tab-h;
+		overflow:hidden;
+		vertical-align: bottom;
+		/* background-color:rgba(255,0,0,.3); */
+
+		div {
+			//height: @tab-h / 2;
+			height: @tab-h;
+			float: left;
+			text-align: center;
+			font-size: .85em;
+
+		}
+
+		.xs-portrait &  {
+			width:100%; 
+		}
+
+		.importo {
+			color: #ffffff;
+			text-align: center;
+			font-size: 1.25em;
+			.xs-portrait &  {
+				font-size: 1em;
+			}
+		}
+
+		.metriquadri {
+			font-weight:bold; 
+			border-style: solid; 
+			border-width:2px 2px 2px 2px;
+			text-align: center;
+			font-size: 1.25em;
+			background-color:#ffffff;
+			.xs-portrait &  {
+				font-size: 1em;
+			}
+		}
+
+	}
+}
+
+.lista-annunci.wait-container {
+	min-height: 100px;
+}
+
+.box-annuncio-in-scadenza {
+	display: none;
+	//.bg-rosso; 
+	//.fg-bianco;
+	width:100%;
+	text-align: center;
+	font-size: 1em;
+	font-weight: bold;
+
+	border-top:1px solid fade(@verde-corporate,15%);
+	background: linear-gradient( fade(@verde-corporate,10%), fade(@verde-corporate,2%), fade(@verde-corporate,2%)); 
+	color: @rosso-corporate;
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+} 
+
+
+
+.box-annuncio-in-scadenza.acceso {
+	display: block;
+}
+
+
+.la-sortable {
+	.bottone-sort {
+		float: right;
+		margin-right: 5px;
+		margin-top: 3px;
+		font-weight: normal;
+		font-size: .8em;
+		margin-top: 2px;
+		cursor: pointer;
+		opacity: .2;
+		border:1px solid rgba(0,0,0,0);
+		padding: 1px;
+		display: none;
+		&:hover {
+			opacity: .4;
+			border-color: initial;
+		}
+	}
+
+	&.la-sort-none 	.bottone-asc {
+		display: inline;
+	}
+
+	&.la-sort-importo-asc {
+
+		.bottone-importo.bottone-asc {
+			display: inline;
+			opacity: 1;
+			//color:red;
+		}
+
+		.bottone-mq.bottone-asc {
+			display: inline;		
+		}
+	}
+
+	&.la-sort-importo-desc {
+		.bottone-importo.bottone-desc {
+			display: inline;
+			opacity: 1;
+			//color:red;
+		}
+		.bottone-mq.bottone-asc {
+			display: inline;		
+		}
+	}
+
+
+	&.la-sort-mq-asc {
+
+		.bottone-mq.bottone-asc {
+			display: inline;
+			opacity: 1;
+			//color:red;
+		}
+
+		.bottone-importo.bottone-asc {
+			display: inline;		
+		}
+	}
+
+	&.la-sort-mq-desc {
+		.bottone-mq.bottone-desc {
+			display: inline;
+			opacity: 1;
+			//color:red;
+		}
+		.bottone-importo.bottone-asc {
+			display: inline;		
+		}
+	}
+
+
+
+}

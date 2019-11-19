@@ -1,0 +1,9 @@
+.salva-ricerca-modal .wrong {
+	border: 1px dotted gray;
+	background-color:rgba(219,0,48,.15);
+}
+
+.message-box .save-ok {
+	text-align: left;
+	padding: 0 30px;
+}

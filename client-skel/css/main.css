@@ -1,0 +1,76 @@
+.bordo-scuro {
+  border-color: #343a40;
+}
+bg-chiaro {
+  background-color: #fdfdfd;
+}
+fg-chiaro {
+  color: #fdfdfd;
+}
+bg-scuro {
+  background-color: #343a40;
+}
+fg-scuro {
+  color: #343a40;
+}
+.fade-top-down {
+  background: linear-gradient(rgba(52, 58, 64, 0.1), rgba(255, 255, 255, 0));
+}
+.fade-down-top {
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(52, 58, 64, 0.1));
+}
+/*
+
+.fade-top-down {
+		background: linear-gradient(fade(@verde-corporate,10%),rgba(255,255,255,0));
+}
+
+.fade-top-down-ligth {
+		background: linear-gradient(fade(@verde-corporate,4%),rgba(255,255,255,0));
+}
+
+.fade-down-top {
+		background: linear-gradient(rgba(255,255,255,0),fade(@verde-corporate,10%));
+}
+
+.fade-l-c-r {
+		background: linear-gradient(to right, fade(@verde-corporate,10%),rgba(255,255,255,0), fade(@verde-corporate,10%));
+}
+*/
+.engapp-breadcrumb {
+  position: relative;
+  top: 5px;
+  left: 0;
+  height: 21px;
+  width: 100%;
+  padding-left: 15px;
+  margin-bottom: 25px;
+}
+.engapp-breadcrumb .elemento {
+  float: left;
+  margin-right: 6px;
+}
+.engapp-breadcrumb .separatore {
+  float: left;
+  margin-right: 6px;
+}
+body.is-main .engapp-breadcrumb {
+  display: none;
+}
+body .navbar {
+  margin-bottom: 0;
+}
+.full-width {
+  width: 100%;
+  height: 100%;
+}
+body.xs .main-top {
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.85);
+}
+body.xs .main-layout-body {
+  margin-top: 80px;
+}

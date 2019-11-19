@@ -1,0 +1,42 @@
+.dettaglio-annuncio .album-foto {
+  margin-top: 30px;
+}
+.dettaglio-annuncio .tabella tr > td {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+.dettaglio-annuncio .tabella td:nth-child(1),
+.dettaglio-annuncio .tabella th:nth-child(1) {
+  width: 145px;
+}
+.dettaglio-annuncio .facebook span,
+.dettaglio-annuncio .twitter span,
+.dettaglio-annuncio .pdf span {
+  display: inline-block;
+  background-repeat: no-repeat;
+  height: 20px;
+  width: 16px;
+  overflow: hidden;
+  margin-left: 6px;
+}
+.dettaglio-annuncio .pdf span {
+  background-image: url(../../img/pdf.gif);
+  background-position: 0px 0px;
+}
+.dettaglio-annuncio .facebook span {
+  background-image: url(../../img/sprite-SocialNetwork.jpg);
+  background-position: 0px 0px;
+}
+.dettaglio-annuncio .twitter span {
+  background-image: url(../../img/sprite-SocialNetwork.jpg);
+  background-position: -16px 0px;
+}
+.dettaglio-annuncio .mappa-container {
+  width: 100%;
+  height: 320px;
+  float: right;
+  clear: both;
+}
+.dettaglio-annuncio .richiesta-info {
+  float: right;
+}

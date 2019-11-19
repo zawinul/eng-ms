@@ -1,0 +1,13 @@
+.testata-colonna {
+	width:100%;
+	display: inline-block;
+	overflow: hidden;
+}
+
+.testata-colonna .testo {
+	float:left;
+}
+
+.testata-colonna .icona {
+	float:right;
+}

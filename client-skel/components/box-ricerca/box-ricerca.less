@@ -1,0 +1,54 @@
+@import (reference) "../../css/main";
+
+
+.vendite-ricerca {
+	select {
+		font-size: .9em;
+		height: 20px;
+		line-height: 0;
+		padding: 0;
+		margin-bottom: 8px;
+		background-color: #f0f0f0;			
+		&.valorizzato {
+			.fg-verde;
+			font-weight: bold;
+			background-color: white;			
+		}
+	}
+
+	select option.dyn {
+		font-weight: bold;
+		color: #333;
+	}
+
+	.mappa-italia-row {
+		width: 100%;
+		padding-left:50%;
+		width:100%; 
+		text-align:center;
+		margin-top:8px
+	}
+
+	.mappa-italia-container {
+		text-align: center;
+		margin-top: 8px;
+		margin-left: -110px;
+		width:220px;
+		/*position: relative;*/
+		height: 275px;
+	}
+	
+	.num-risultati {
+		font-size:.85em;
+	}
+
+	.salva-ricerca {
+		display: none;
+	}
+
+	.panel-footer button {
+		float:right;
+		margin-left:12px;
+	}
+
+}
