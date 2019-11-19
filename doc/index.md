@@ -63,16 +63,8 @@ https://eng-static:91/r3/richiedi/
 
 #VIRTUAL BOX
 ---
-https://www.osboxes.org/fedora/  
-Fedora 31  
-C:\Users\a135631\VirtualBox VMs\F31-VB-64bit.7z  
-
-sudo useradd -m paolo -p paolo
-sudo groupadd developers
-
-sudo usermod -a -G developers paolo
-sudo usermod -aG wheel paolo
-
+creata macchina Debian 10 con Docker, Node, Jdk, Maven, VS Code
+[more...](./oidc-provider.md)
 
 
 VARIE

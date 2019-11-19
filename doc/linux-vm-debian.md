@@ -26,8 +26,8 @@ LINUX VM
 
 	sudo chsh -s /bin/bash paolo
 	
-	sudo git config --global user.name "Nome Cognome"
-	sudo git config --global user.email "indirizzo@mail.com"
+	git config --global user.name "Nome Cognome"
+	git config --global user.email "indirizzo@mail.com"
 
 
 * modificato .bashrc

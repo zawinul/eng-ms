@@ -1,3 +1,4 @@
+#!/bin/bash
 pushd $ENGMSDIR
 sudo git pull
 sudo chgrp -R developers . 
