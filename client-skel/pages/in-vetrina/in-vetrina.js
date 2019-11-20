@@ -6,7 +6,7 @@
 	function activate(par) {
 		isMain = !!par.isMain;
 		$('body').toggleClass('is-main', isMain);
-		div.appendTo('.main-layout-body');		
+		div.appendTo('.engapp-page-container');		
 		engapp.getBoxRicerca(function(box){
 			console.log('invetrina, obtained box ricerca');
 			containerRicerca.append(box);
@@ -30,7 +30,7 @@
 	}
 	
 	function init(callback) {
-		div = $('<div/>').appendTo('.main-layout-body');
+		div = $('<div/>').appendTo('.engapp-page-container');
 		engapp.load("pages/in-vetrina/in-vetrina.css");
 		engapp.load(div, "pages/in-vetrina/in-vetrina.html").then(function(){
 			console.log('in-vetrina loaded');

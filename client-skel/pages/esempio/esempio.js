@@ -2,7 +2,7 @@
 	var div;
 	
 	function activate(par) {
-		div.appendTo('.main-layout-body');
+		div.appendTo('.engapp-page-container');
 		engapp.setMenuActive('esempio');		
 	}
 		
@@ -12,7 +12,7 @@
 	}
 	
 	function init(callback) {
-		div = $('<div/>').appendTo('.main-layout-body');
+		div = $('<div/>').appendTo('.engapp-page-container');
 		engapp.load(div, "pages/esempio/esempio.html").then(function(){
 			callback();
 		});

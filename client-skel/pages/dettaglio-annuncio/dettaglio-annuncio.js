@@ -7,7 +7,7 @@
 	function activate(par) {
 		id = par.id;
 		$('.foto-album-div', div).remove();
-		div.appendTo('.main-layout-body');
+		div.appendTo('.engapp-page-container');
 		$('[data-annuncio], [data-immobile]', div).html('');
 		engapp.ajax.getAnnuncio(id, onAnnuncio);
 	}
@@ -93,7 +93,7 @@
 	}
 
 	function init(callback) {
-		div = $('<div/>').appendTo('.main-layout-body');
+		div = $('<div/>').appendTo('.engapp-page-container');
 		var toLoad = [
 			"components/richiesta-info/richiesta-info.js",
 			"pages/dettaglio-annuncio/dettaglio-annuncio.css",

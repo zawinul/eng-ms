@@ -3,7 +3,7 @@
 	var listaRisultati = null;
 
 	function activate(par) {
-		div.appendTo('.main-layout-body');		
+		div.appendTo('.engapp-page-container');		
 		engapp.getBoxRicerca(function(box){
 			containerRicerca.append(box);
 		});
@@ -21,7 +21,7 @@
 	}
 	
 	function init(callback) {
-		div = $('<div/>').appendTo('.main-layout-body');
+		div = $('<div/>').appendTo('.engapp-page-container');
 		engapp.load("pages/vendite/engapp.css");
 		engapp.load(div, "pages/vendite/engapp.html").then(function(){
 			containerRicerca = $('.ricerca', div);

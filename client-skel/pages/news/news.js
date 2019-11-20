@@ -2,7 +2,7 @@
 	var div, templateArticolo;
 	
 	function activate(par) {
-		div.appendTo('.main-layout-body');
+		div.appendTo('.engapp-page-container');
 		vendite.setMenuActive('esempio');		
 	}
 		
@@ -12,7 +12,7 @@
 	}
 	
 	function init(callback) {
-		div = $('<div/>').appendTo('.main-layout-body');
+		div = $('<div/>').appendTo('.engapp-page-container');
 		vendite.load("pages/news/news.css");
 		vendite.load(div, "pages/news/news.html").then(function(){
 			templateArticolo = $('.articolo', div).detach(); 

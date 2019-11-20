@@ -71,6 +71,6 @@ body.xs .main-top {
   top: 0;
   background-color: rgba(255, 255, 255, 0.85);
 }
-body.xs .main-layout-body {
+body.xs .engapp-page-container {
   margin-top: 80px;
 }

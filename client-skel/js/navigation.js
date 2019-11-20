@@ -1,9 +1,9 @@
 (function _navigation() {
 
 
-var opened = [];	
 var curr;
 var ignoraHashChange = false;
+var container;
 
 // questa funzione viene chiamata automaticamente dal browser ad ogni cambio indirizzo
 window.onhashchange = function(evt) {
@@ -18,27 +18,26 @@ window.onhashchange = function(evt) {
 
 
 function init() {
+	container = engapp.pageContainer = $('.engapp-page-container');
+
 }
 
 
 function main() {
 	engapp.breadcrumb.clear();
-	localOpenPage('in-vetrina', {isMain:true});	
+	localOpenPage('home', {isMain:true});	
 }
 
 function parseAddress() {
-	debugger;
 	console.log("parseAddress: "+location.href);
-	var p = location.href.indexOf('#');
-	if (p<0) 
+	// hashAndQuery = url dal # in poi
+	var hashAndQuery = location.href.split('#')[1];
+	if (!hashAndQuery) 
 		return main();
 	
 
-	// hash = url dal # in poi
-	var hash = (p>=0) ? location.href.substring(p) : "#";
-	p = hash.indexOf('?');
-	var page = (p>=0) ? hash.substring(1,p) : hash.substring(1);
-	var query = (p>=0) ? hash.substring(p+1) : "";
+	var page = hashAndQuery.split('?')[0];
+	var query = hashAndQuery.split('?')[1];
 
 	if (page.substring(0,1)=="/")
 		page = page.substring(1);
@@ -46,21 +45,18 @@ function parseAddress() {
 		return main();
 
 	var params = {};
-	query = query.split("&");
+	query = query ? query.split("&") : [];
 	for(var i=0;i<query.length; i++) {
-		var par = query[i];
-		p = par.indexOf("=");
-		if (p<0)
-			continue;
-		var key = par.substring(0,p);
-		var value = par.substring(p+1);
-		params[key] = value;
+		var par = query[i].split('=');
+		var key = par[0];
+		var value = par[1];
+		params[unescape(key)] = unescape(value);
 	}
 	
-	engapp.queryParams = params;
+	engapp.status.queryParams = params;
 
 	// aggiungo lo stato corrente al breadcrumb
-	engapp.breadcrumb.push(page, hash);
+	engapp.breadcrumb.push(page, hashAndQuery);
 
 	// aggiorno la UI
 	localOpenPage(page, params);	
@@ -99,10 +95,10 @@ function changeHash(name, params) {
 	for(var k in params)
 		if (params[k])
 			arr.push(escape(k)+"="+escape(params[k]));
-	engapp.currHash = "";
+	engapp.status.currHash = "";
 	if (arr.length>0) {
-		engapp.currHash = arr.join('&');
-		adr += "?" + engapp.currHash;
+		engapp.status.currHash = arr.join('&');
+		adr += "?" + engapp.status.currHash;
 	}
 	curr = name;
 	if (window.location.hash != '#'+adr) {
@@ -150,48 +146,39 @@ function localOpenPage(name, params) {
 	$('body').waitStart();
 
 	// usciamo dalla pagina di provenienza
-	var prev = (engapp.currPage) 
-		? engapp.appPages[camelize(engapp.currPage)] 
+	var prev = (engapp.status.currPage) 
+		? engapp.appPages[camelize(engapp.status.currPage)] 
 		: null;
 	if (prev) {
-		var k = prev.deactivate(name, params);
+		var k = prev.deactivate(container, params);
 		if (typeof(k)=='undefined')
-			return go(true);
+			return go();
 		else if (!k) 
-			return go(false); 
+			return abortJump(); 
 		else 
-			when(k).then(go);
+			when(k).then(go, abortJump);
 	}
 	else
 		go(true);
 	
-	function go(reallyJump) { // salta alla pagina target
+	function abortJump() {
+		$('body').waitStop();
+	}
+	function go() { // salta alla pagina target
 		$('body').waitStop();
 
-		if (reallyJump) {
-			engapp.currPage = name;
-			if (opened.indexOf(next)<0)
-				opened.push(next);
-			document.title = "ENGAPP - "+name.replace('-', ' ');
-			if (next.init) {
-				if (!next._initialized) {
-					function f()  {
-						next._initialized = true; 
-						start();
-					}
-					next.init(f);
-				}
-				else
-					start(); 
-			}
-			else
-				start(); 
-		}
+		engapp.status.currPage = name;
+		document.title = "ENGAPP - "+name.replace('-', ' ');
+		var initVal = next._initialized || next.init(container);
+			
+		$.when(initVal).then(start).catch(function(){
+			alert('non è stato possibile inizializzare ['+name+']');
+		});
 	}
 	
 	function start() {
 		console.log({ openPage:name, params:params});
-		next.activate(params); 
+		next.activate(container, params); 
 		engapp.breadcrumb.draw();
 	}
 }
@@ -206,7 +193,6 @@ function home() {
 }
 
 engapp.onStart(init);
-
 $.extend(engapp,  {
 	openPage:gotoPage,
 	pushPage:pushPage,
@@ -214,5 +200,7 @@ $.extend(engapp,  {
 	changeHash: changeHash,
 	home: home
 });
+
+
 
 })();

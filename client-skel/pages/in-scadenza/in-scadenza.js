@@ -4,7 +4,7 @@
 
 
 	function activate(par) {
-		div.appendTo('.main-layout-body');		
+		div.appendTo('.engapp-page-container');		
 		vendite.getBoxRicerca(function(box){
 			containerRicerca.append(box);
 		});
@@ -32,7 +32,7 @@
 	}
 	
 	function init(callback) {
-		div = $('<div/>').appendTo('.main-layout-body');
+		div = $('<div/>').appendTo('.engapp-page-container');
 		vendite.load("pages/in-scadenza/in-scadenza.css");
 		vendite.load(div, "pages/in-scadenza/in-scadenza.html").then(function(){
 			containerRicerca = $('.ricerca', div);

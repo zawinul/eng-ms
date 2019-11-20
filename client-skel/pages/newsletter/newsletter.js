@@ -6,7 +6,7 @@
 	var mailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 	function activate(par) {
-		div.appendTo('.main-layout-body');
+		div.appendTo('.engapp-page-container');
 		vendite.setMenuActive('newsletter');
 		check();
 	}
@@ -53,7 +53,7 @@
 	}
 	
 	function init(callback) {
-		div = $('<div/>').appendTo('.main-layout-body');
+		div = $('<div/>').appendTo('.engapp-page-container');
 		vendite.load("pages/newsletter/newsletter.css");
 		vendite.load(div, "pages/newsletter/newsletter.html").then(function(){
 			$('input', div).bind('click change keypress keyup', check);

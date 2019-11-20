@@ -1,8 +1,8 @@
 
 
 var engapp = {
-	clientver:'001',
-	appPages: {} 
+	appPages: {}, 
+	status: {}
 };
 
 (function (){
@@ -37,7 +37,6 @@ var initialLoad = [
 	"components/box-ricerca/box-ricerca.js",
 	"components/box-annuncio/box-annuncio.js",
 	"components/box-annuncio/lista-annunci.js",
-	"components/news-box/news-box.js",
 	"components/breadcrumb/breadcrumb.js",
 	"components/informativa-cookies/informativa-cookies.js",
 	"components/header/header.js",

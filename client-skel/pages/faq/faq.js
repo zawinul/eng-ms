@@ -3,7 +3,7 @@
 	var faq;
 	var categoriaTemplate, elementoTemplate;
 	function activate(par) {
-		div.appendTo('.main-layout-body');
+		div.appendTo('.engapp-page-container');
 		vendite.setMenuActive('faq');		
 	}
 		
@@ -13,7 +13,7 @@
 	}
 	
 	function init(callback) {
-		div = $('<div/>').appendTo('.main-layout-body');
+		div = $('<div/>').appendTo('.engapp-page-container');
 		vendite.load("pages/faq/faq.css");
 		vendite.load(div, "pages/faq/faq.html").then(function(){
 			categoriaTemplate = $('.categoria', div).detach();

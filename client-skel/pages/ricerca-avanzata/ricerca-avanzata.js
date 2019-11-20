@@ -13,7 +13,7 @@
 
 		id = par.id;
 		caller = par.caller;
-		div.appendTo('.main-layout-body');
+		div.appendTo('.engapp-page-container');
 		engapp.getBoxRicerca(function(box) {
 			boxRicerca = box;
 			$('.criteri', div).append(boxRicerca);
@@ -132,7 +132,7 @@
 	function init(callback) {
 		datiPresenti = initMappaComuni().then(getChiaviDiRicerca);
 		datiPresenti.then(function() { console.log("DATI PRESENTI");})
-		div = $('<div/>').appendTo('.main-layout-body');
+		div = $('<div/>').appendTo('.engapp-page-container');
 		var toLoad = [
 			"pages/ricerca-avanzata/ricerca-avanzata.css",
 			[div, "pages/ricerca-avanzata/ricerca-avanzata.html"]

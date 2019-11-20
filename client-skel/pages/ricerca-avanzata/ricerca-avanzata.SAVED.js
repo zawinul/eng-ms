@@ -7,7 +7,7 @@
 	function activate(par) {
 		id = par.id;
 		caller = par.caller;
-		div.appendTo('.main-layout-body');
+		div.appendTo('.engapp-page-container');
 		vendite.setBoxRicerca($('.criteri'), 'in-vetrina');
 		refresh();
 	}
@@ -81,7 +81,7 @@
 	}
 
 	function init(callback) {
-		div = $('<div/>').appendTo('.main-layout-body');
+		div = $('<div/>').appendTo('.engapp-page-container');
 		var toLoad = [
 			"pages/ricerca-avanzata/ricerca-avanzata.css",
 			[div, "pages/ricerca-avanzata/ricerca-avanzata.html"]

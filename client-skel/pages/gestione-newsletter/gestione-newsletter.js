@@ -2,7 +2,7 @@
 	var div;
 
 	function activate(par) {
-		div.appendTo('.main-layout-body');
+		div.appendTo('.engapp-page-container');
 		var container = $('.messaggio', div);
 		container.empty();
 		div.css({visibility:'hidden'});

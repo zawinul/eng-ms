@@ -4,7 +4,7 @@
 
 
 	function activate(par) {
-		div.appendTo('.main-layout-body');		
+		div.appendTo('.engapp-page-container');		
 		engapp.getBoxRicerca(function(box){
 			containerRicerca.append(box);
 		});
@@ -22,7 +22,7 @@
 	}
 	
 	function init(callback) {
-		div = $('<div/>').appendTo('.main-layout-body');
+		div = $('<div/>').appendTo('.engapp-page-container');
 		engapp.load("pages/affitti/affitti.css");
 		engapp.load(div, "pages/affitti/affitti.html").then(function(){
 			containerRicerca = $('.ricerca', div);
