@@ -47,10 +47,12 @@ engapp.caricaComponente = function(name) {
 }
 
 engapp.creaComponente = function(name) {
-
+	var creaArgs = [];
+	for(var i=1; i<arguments.length; i++)
+		creaArgs.push(arguments[i]);
 	return engapp.caricaComponente(name).then(function() {
 		if (engapp.components[name])
-			return engapp.components[name].create(arguments);
+			return engapp.components[name].create.apply(null, creaArgs);
 		else {
 			engapp.load('components/' + name + '/style.css');
 			var div = $('<div/>');

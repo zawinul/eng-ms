@@ -19,7 +19,6 @@ window.onhashchange = function(evt) {
 
 function init() {
 	container = engapp.pageContainer = $('.engapp-page-container');
-
 }
 
 
@@ -57,11 +56,6 @@ function parseAddress() {
 	}
 	
 	engapp.status.queryParams = params;
-
-	// aggiungo lo stato corrente al breadcrumb
-	engapp.caricaComponente('breadcrumb').then(function(){
-		engapp.components.breadcrumb.push(page, hashAndQuery);
-	});
 
 	// aggiorno la UI
 	localOpenPage(page, params);	
@@ -155,6 +149,7 @@ function localOpenPage(name, params) {
 	function abortJump() {
 		$('body').waitStop();
 	}
+	
 	function go() { // salta alla pagina target
 		$('body').waitStop();
 		engapp.status.currPage = name;
@@ -174,7 +169,17 @@ function localOpenPage(name, params) {
 	function start() {
 		console.log({ openPage:name, params:params});
 		next.activate(container, params); 
-		engapp.components.breadcrumb.draw();
+		
+		// aggiungo lo stato corrente al breadcrumb
+		var breadcrumbLabel = next.getBreadcrumbLabel(params);
+		engapp.caricaComponente('breadcrumb').then(function(){
+			var hash = location.href.split('#')[1];
+			hash = hash ? '#'+hash: '';
+			engapp.components.breadcrumb.push(breadcrumbLabel, hash);
+			engapp.components.breadcrumb.draw();
+		});
+		
+
 	}
 }
 
@@ -214,6 +219,10 @@ function registerPage(cfg) {
 			div = $('<div/>').appendTo(container);
 			engapp.load(base+"/style.css");
 			return engapp.load(div, base+"/content.html");
+		},
+
+		getBreadcrumbLabel: function(params) {
+			return this.name;
 		}
 	};
 

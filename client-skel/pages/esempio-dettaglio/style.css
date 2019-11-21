@@ -1,0 +1,8 @@
+.pagina-uno .centered {
+  text-align: center;
+}
+.pagina-uno .centered img {
+  width: 50%;
+  max-width: 250px;
+  margin: 40px auto 20px auto;
+}
