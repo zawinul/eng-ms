@@ -52,7 +52,7 @@
 				$('.no-result', div).hide();
 			else
 				$('.no-result', div).show();
-			engapp.changeHash('ricerca-avanzata', criteri);
+			engapp.navigation.changeHash('ricerca-avanzata', criteri);
 		});
 	}
 

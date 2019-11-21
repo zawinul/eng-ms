@@ -24,7 +24,9 @@ function init() {
 
 
 function main() {
-	engapp.breadcrumb.clear();
+	engapp.caricaComponente('breadcrumb').then(function(){
+		engapp.components.breadcrumb.clear();
+	});
 	localOpenPage('home', {isMain:true});	
 }
 
@@ -36,7 +38,7 @@ function parseAddress() {
 		return main();
 	
 
-	var page = hashAndQuery.split('?')[0];
+	var page = unescape(hashAndQuery.split('?')[0]);
 	var query = hashAndQuery.split('?')[1];
 
 	if (page.substring(0,1)=="/")
@@ -44,6 +46,7 @@ function parseAddress() {
 	if (page=="")
 		return main();
 
+	console.log('next page is '+page);
 	var params = {};
 	query = query ? query.split("&") : [];
 	for(var i=0;i<query.length; i++) {
@@ -56,34 +59,24 @@ function parseAddress() {
 	engapp.status.queryParams = params;
 
 	// aggiungo lo stato corrente al breadcrumb
-	engapp.breadcrumb.push(page, hashAndQuery);
+	engapp.caricaComponente('breadcrumb').then(function(){
+		engapp.components.breadcrumb.push(page, hashAndQuery);
+	});
 
 	// aggiorno la UI
 	localOpenPage(page, params);	
 }
 
-function camelize(str) {
-	if (typeof(str)!='string')
-		return str;
-	var p = str.indexOf('-');
-	if (p<0)
-		return str;
-	else return str.substring(0,p)
-		+ str.substring(p+1,p+2).toUpperCase()
-		+ camelize(str.substring(p+2));
-}
-
-
 function gotoPage(name, params) {
 	console.log('goto '+name);
-	engapp.breadcrumb.clear();
+	engapp.components.breadcrumb.clear();
 	pushPage(name, params);
 }
 
 
 function substPage(name, params) {
 	console.log('subst '+name);
-	engapp.breadcrumb.pop();
+	engapp.components.breadcrumb.pop();
 	pushPage(name, params);
 }
 
@@ -111,7 +104,7 @@ function changeHash(name, params) {
 function pushPage(name, params) {
 	
 	console.log('push '+name);
-	var adr = "#/"+name;
+	var adr = "#/"+escape(name);
 	params = params || {};
 	var arr = [];
 	for(var k in params)
@@ -127,27 +120,25 @@ function pushPage(name, params) {
 }
 
 function localOpenPage(name, params) {
-
-	var cname = camelize(name);
-	var next = engapp.appPages[cname];
-	if (next==null) {
+	var next = engapp.appPages[name];
+	if (!next) {
 		// la pagina 'name' non è mai stata caricata in precedenza, caricala e ripeti l'operazione
-		engapp.caricaPagina(name).then(function(){
+		caricaPagina(name).then(function(){
 			localOpenPage(name, params);
 		});
 		return;
 	}
 
-	engapp.setMenuActive(null);
+	//engapp.setMenuActive(null);
 	
 	
 	params = params || {};
-	console.log('jumping to ' + cname + ' '+!!next);
+	console.log('jumping to ' + name + ' '+!!next);
 	$('body').waitStart();
 
 	// usciamo dalla pagina di provenienza
 	var prev = (engapp.status.currPage) 
-		? engapp.appPages[camelize(engapp.status.currPage)] 
+		? engapp.appPages[engapp.status.currPage] 
 		: null;
 	if (prev) {
 		var k = prev.deactivate(container, params);
@@ -166,41 +157,89 @@ function localOpenPage(name, params) {
 	}
 	function go() { // salta alla pagina target
 		$('body').waitStop();
-
 		engapp.status.currPage = name;
 		document.title = "ENGAPP - "+name.replace('-', ' ');
-		var initVal = next._initialized || next.init(container);
-			
-		$.when(initVal).then(start).catch(function(){
-			alert('non è stato possibile inizializzare ['+name+']');
-		});
+		var initVal = next._initialized || next.init(container, 'pages/'+escape(name));
+		var p = $.when(initVal)
+			.then(function(){ 
+				next._initialized=true
+			})
+			.then(start)
+			.catch(function(){
+				alert('non è stato possibile inizializzare ['+name+']');
+			});
+		return p;
 	}
 	
 	function start() {
 		console.log({ openPage:name, params:params});
 		next.activate(container, params); 
-		engapp.breadcrumb.draw();
+		engapp.components.breadcrumb.draw();
 	}
 }
 
+
+function caricaPagina(name) {
+	var p = engapp.load('pages/'+escape(name)+'/handler.js')
+		.catch(function(){ 
+			registerPage({name: name}); 
+			return true;}
+		);
+	return p;
+}
+
+function setDefaultPageHandler(name) {
+
+}
 
 function susbstPage(name, params) {
 
 }
 
-function home() {
-	parseAddress();
+function registerPage(cfg) {
+	var base, div;
+
+	var defaultConfig = {
+		name: 'default',
+		activate:function(){
+			div.appendTo(container);		
+		},
+
+		deactivate:function(){
+			div.detach();
+		},
+
+		init:function(container, baseUrl) {
+			base = baseUrl;
+			div = $('<div/>').appendTo(container);
+			engapp.load(base+"/style.css");
+			return engapp.load(div, base+"/content.html");
+		}
+	};
+
+	cfg = $.extend(defaultConfig, cfg);
+	engapp.appPages[cfg.name] = cfg; 
+
 }
 
-engapp.onStart(init);
-$.extend(engapp,  {
+
+engapp.navigation =  {
 	openPage:gotoPage,
 	pushPage:pushPage,
 	substPage:substPage,
 	changeHash: changeHash,
-	home: home
-});
+	registerPage: registerPage,
+	parseAddress: parseAddress
+};
+
+engapp.onStart(init);
 
 
 
 })();
+
+function buildMainPage() {
+		engapp.creaComponente('menu').then(function (menu) {
+			$('.engapp-menu').append(menu.content);
+		});
+}

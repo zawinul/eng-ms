@@ -2,7 +2,8 @@
 
 var engapp = {
 	appPages: {}, 
-	status: {}
+	status: {},
+	components: {}
 };
 
 (function (){
@@ -17,8 +18,8 @@ var initialLoad = [
 
 	"js/engapp-lib.js",
 
-	"libs/ie10-viewport-bug-workaround.css",
-	"libs/ie10-viewport-bug-workaround.js",
+//	"libs/ie10-viewport-bug-workaround.css",
+//	"libs/ie10-viewport-bug-workaround.js",
 	"libs/bootstrap-toolkit.js",
 	"js/responsive.js",
 	
@@ -32,24 +33,33 @@ var initialLoad = [
 	"libs/js.cookie.js",
 	
 	
-	"components/footer/footer.js",
-	"components/menu/menu.js",
-	"components/box-ricerca/box-ricerca.js",
-	"components/box-annuncio/box-annuncio.js",
-	"components/box-annuncio/lista-annunci.js",
-	"components/breadcrumb/breadcrumb.js",
-	"components/informativa-cookies/informativa-cookies.js",
-	"components/header/header.js",
-	"components/message-box/message-box.js"
+//	"components/breadcrumb/handler.js",
+//	"components/footer/handler.js",
+//	"components/menu/handler.js",
+	"components/informativa-cookies/handler.js",
+	"components/header/handler.js",
+	"components/message-box/handler.js"
 ];
-
-engapp.caricaPagina = function(name) {
-	return engapp.load('pages/'+name+'/'+name+'.js');
-}
 
 
 engapp.caricaComponente = function(name) {
-	return engapp.load('components/'+name+'/'+name+'.js');
+	return engapp.load('components/'+name+'/handler.js');
+}
+
+engapp.creaComponente = function(name) {
+
+	return engapp.caricaComponente(name).then(function() {
+		if (engapp.components[name])
+			return engapp.components[name].create(arguments);
+		else {
+			engapp.load('components/' + name + '/style.css');
+			var div = $('<div/>');
+			var p2 = div.load('components/' + name + '/content.html');
+			return p2.then(function(){
+				return div.children();
+			});
+		}
+	});
 }
 
 
@@ -60,9 +70,15 @@ engapp.onStart = function(fun) {
 function loaderInit() {
 	// all'inizio nascondi tutto per evitare sfarfallamenti
 	$('body').css({opacity:0});
-	engapp.onStart.promise = loadAll();
-	engapp.onStart(function(){
-		engapp.home();
+	engapp.onStart.promise = loadAll().then(function(){
+		return engapp.caricaComponente('layout');
+	})
+	.then(function(){
+		engapp.components.layout.init();
+	});
+	engapp.onStart(function() {
+
+		engapp.navigation.parseAddress();
 		$('body').animate({opacity:1}, 500);
 	});
 
@@ -227,7 +243,7 @@ function loadJavascript(url) {
 				console.log('    loaded '+url);
 		},
 		error: function(){
-			alert('errore nel caricamento di '+url);
+			console.log('errore nel caricamento di '+url);
 		}
 	});	
 	return loaded[url];

@@ -21,18 +21,6 @@ function pageLabel(page) {
 	return labels[page] || page;
 }
 
-function init(){
-	engapp.load('components/breadcrumb/breadcrumb.css');	
-	div = $('.vendite-breadcrumb');
-	window.breadcrumbList = list;
-
-	engapp.load(div, "components/breadcrumb/breadcrumb.html").then(function(){
-		templateElemento = $('.template.elemento', div).detach().removeClass('template');
-		templateSeparatore = $('.template.separatore', div).detach().removeClass('template');
-		ready.resolve();
-});
-}
-
 function draw() {
 	ready.then(_draw);
 }
@@ -74,7 +62,7 @@ function push(page, hash) {
 	}
 	else {
 		for(var i=list.length-1; i>=0; i--) {
-			if (breadcrumbList[i].url == hash) {
+			if (list[i].url == hash) {
 				list.length = i;
 				break;
 			}
@@ -98,13 +86,27 @@ function back() {
 	}
 }
 
-engapp.breadcrumb = {
+function create() {
+	div = $('<div/>');
+	ready = engapp.load(div, "components/breadcrumb/content.html").then(function(){
+		templateElemento = $('.template.elemento', div).detach().removeClass('template');
+		templateSeparatore = $('.template.separatore', div).detach().removeClass('template');
+		engapp.components.breadcrumb.content = div;	
+		return engapp.components.breadcrumb;
+	});
+	return ready;
+
+}
+
+engapp.load('components/breadcrumb/style.css');	
+
+engapp.components.breadcrumb = {
+	create: create,
 	draw: draw,
 	clear: clear,
 	push:push,
 	pop:pop,
 	back:back
 }
-engapp.onStart(init);
 
 })();

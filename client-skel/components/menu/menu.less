@@ -3,17 +3,42 @@
 .navbar {
 	padding-top: 2px;
 	padding-bottom: 2px;
+	padding-left: 10px;
 
+	background: linear-gradient(to right, 
+		@light-color, 
+		@light-color 25px, 
+		mix(@light-color, @dark-color) 80px, 
+		@dark-color 100px, 
+		@dark-color);
+
+	.navbar-brand {
+		padding: 0;
+		.brand-img {
+			width: 35px;
+			margin-bottom: 0;
+			margin-top: 0;
+			margin-right: 17px;
+			position: relative;
+			top: -2px;
+		}
+	};
+
+	.navbar-nav .nav-link {
+		color: rgba(255,255,255,.85);
+		padding-top: 0;
+		padding-bottom: 0;
+	}
 	.big-title  {
 		position: absolute;
-		color: rgba(0,0,0,.4);
+		color: rgba(0, 0, 0, 0.4);
 		z-index: 999;
 		right: 13px;
 		/* font-family: courier; */
 		/* font-weight: bold; */
-		font-size: 45px;
-		top: -14px;
-		text-shadow: -1px 1px #ffffff;
+		font-size: 29px;
+		top: -6px;
+		text-shadow: -1px 1px #ccc;
 	}
 }
 
