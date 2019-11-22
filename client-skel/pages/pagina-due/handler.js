@@ -18,18 +18,11 @@
 	}
 	
 	function onPageLoad() {
-		var trTemplate = $('tbody>tr', div).detach();
-		for(var i=0; i<20; i++) {
-			let tr = trTemplate.clone();
-			let id = Math.floor(Math.random()*100000);
-			let link = $('<a href="#">item '+id+'</a>').click(function(){
-				alert(id);
-			});
-			$('td', tr).eq(0).append(link);
-			$('td', tr).eq(1).text('AAA '+Math.random());
-			$('td', tr).eq(2).text('BBB '+Math.random());
-			$('tbody', div).append(tr);
-		}
+		$('.spazio-tabella', div).each(async function() {
+			var tab = await engapp.creaComponente('tabella-finta', 9);
+			$(this).append(tab.content);
+		});
+
 	}
 
 	engapp.navigation.registerPage({

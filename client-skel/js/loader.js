@@ -114,7 +114,7 @@ function getUrlParams(url) {
 
 function initConfig() {
 	var d = $.Deferred();
-	engapp.ajax.getConfig().then(
+	engapp.utils.getConfig().then(
 		function(c) {
 			engapp.config = c;
 			d.resolve();
@@ -127,7 +127,6 @@ function initConfig() {
 function loadAll() {
 	return loadMultiplo(initialLoad)
 		.then(initConfig)
-		//.then(engapp.ajax.getTerritorio())
 		.then(function(){ 
 			console.log(" === INITIAL LOAD COMPLETED === ");
 			return true;
