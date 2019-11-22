@@ -31,14 +31,6 @@ var initialLoad = [
 	"libs/moment.locale.it.js",
 	"libs/mousetrap.js",
 	"libs/js.cookie.js",
-	
-	
-//	"components/breadcrumb/handler.js",
-//	"components/footer/handler.js",
-//	"components/menu/handler.js",
-	"components/informativa-cookies/handler.js",
-	"components/header/handler.js",
-	"components/message-box/handler.js"
 ];
 
 

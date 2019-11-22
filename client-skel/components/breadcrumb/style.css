@@ -1,4 +1,4 @@
-.vendite-breadcrumb {
+.engapp-breadcrumb {
   position: relative;
   top: 5px;
   left: 0;
@@ -6,14 +6,14 @@
   width: 100%;
   padding-left: 15px;
 }
-.vendite-breadcrumb .elemento {
+.engapp-breadcrumb .elemento {
   float: left;
   margin-right: 6px;
 }
-.vendite-breadcrumb .separatore {
+.engapp-breadcrumb .separatore {
   float: left;
   margin-right: 6px;
 }
-body.is-main .vendite-breadcrumb {
+body.is-main .engapp-breadcrumb {
   display: none;
 }

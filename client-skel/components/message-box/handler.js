@@ -1,7 +1,7 @@
 (function _(){
 
 var ui_ready = $.Deferred();	
-var div;
+var template;
 var initialized = false;
 
 
@@ -9,18 +9,17 @@ function init() {
 	if (initialized)
 		return;
 
-	div = $("<div/>").addClass("message-box");
-	engapp.load("components/message-box/message-box.css");
-	engapp.load(div, "components/message-box/message-box.html").then(onPageLoaded);
-}
-
-function onPageLoaded() {
+	template = $("<div/>").addClass("message-box");
+	engapp.load("components/message-box/style.css");
 	initialized = true;
-	ui_ready.resolve();
+	ui_ready = engapp.load(template, "components/message-box/content.html").then(function(){
+		initialized = true;
+	});
 }
 
-engapp.messageBox = function(title, content) {
+function create(title, content) {
 	var d = $.Deferred();
+	var div; 
 
 	function apri() {
 		div.detach();
@@ -34,6 +33,7 @@ engapp.messageBox = function(title, content) {
 
 		$('body').append(div);
 		$('.modal', div).modal('show');
+		return d;
 	}
 
 	function chiudi() {
@@ -43,15 +43,29 @@ engapp.messageBox = function(title, content) {
 	}
 
 	init();
-	ui_ready.then(apri);
-	return d;
+	return 	ui_ready.then(function() {
+		div = template.clone();
+		return {
+			content: div,
+			open: apri,
+			close: chiudi
+		};
+	});
 }
 
+init();
+
+engapp.components['message-box'] = {
+	create: create
+};
 
 })()
 
 // ESEMPIO
-// 	 engapp.caricaComponente('message-box')
-// 	.then(function(){ return engapp.messageBox('Portale Vendite - Iscrizione Newsletter', 'Iscrizione avvenuta con successo'); })
-// 	.then(function() { console.log('fatto'); });
+function esempio() {
+	engapp.creaComponente('message-box', 'Engapp - Iscrizione Newsletter', 'Iscrizione avvenuta con successo')
+	.then(function(mb){
+		mb.open().then(function(){alert('ok')});
+	});
+}
 

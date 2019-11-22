@@ -5,21 +5,6 @@ var list = [];
 var ready = $.Deferred();
 window.debugBreadcrumb = list;
 
-function pageLabel(page) {
-	var labels = {
-		"in-vetrina": "In Vetrina",
-		"nuovi-annunci": "Nuovi Annunci",
-		"ricerca-avanzata": "Ricerca",
-		"dettaglio-annuncio": "Dettaglio",
-		"faq": "Domande e Risposte",
-		"newsletter": "Iscrizione alla Newsletter",
-		"affitti": "Affitti",
-		"vendite": "Vendite",
-		"news": "News",
-		"in-scadenza": "In scadenza"
-	}
-	return labels[page] || page;
-}
 
 function draw() {
 	ready.then(_draw);
@@ -44,7 +29,7 @@ function _draw() {
 		var h = list[i];
 		// aggiungo un link
 		var el = templateElemento.clone().appendTo(div);
-		$('.etichetta', el).text(pageLabel(h.page));
+		$('.etichetta', el).text(h.page);
 		$('a', el).attr('href', 'javascript:void(0)').click(function(evt) {
 			console.log("breadCrumbEvent:i="+i+" href="+h.url);
 			list.length = i;
